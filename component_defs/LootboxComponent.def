@@ -6,6 +6,9 @@
 			<Args>
 				<lootboxType> GAMEPARAMS_ID </lootboxType>
 			</Args>
+			<ReturnValues>
+				<rewards> MSGPACK_BLOB </rewards>
+			</ReturnValues>
 		</openLootbox>
 
 		<openLootboxesByType>
@@ -14,6 +17,9 @@
 				<lootboxType> GAMEPARAMS_ID </lootboxType>
 				<amount> UINT16 </amount>
 			</Args>
+			<ReturnValues>
+				<rewards> MSGPACK_BLOB </rewards>
+			</ReturnValues>
 		</openLootboxesByType>
 
 		<openLootboxes>
@@ -22,31 +28,7 @@
 	</BaseMethods>
 
 	<ClientMethods>
-		<onSingleLootboxOpened>
-			<Args>
-				<lootboxType> GAMEPARAMS_ID </lootboxType>
-				<rewards> MSGPACK_BLOB </rewards>
-			</Args>
-			<VariableLengthHeaderSize>
-				<WarnLevel>none</WarnLevel>
-			</VariableLengthHeaderSize>
-		</onSingleLootboxOpened>
-
 		<onMassLootboxOpenFailed/>
-		<onSingleLootboxOpenFailed/>
-
-		<onOpenLootboxesStarted>
-			<Args>
-				<num> UINT16 </num>
-			</Args>
-		</onOpenLootboxesStarted>
-
-		<updateOpenedLootboxCount>
-			<Args>
-				<num> UINT16 </num>
-			</Args>
-		</updateOpenedLootboxCount>
-
 	</ClientMethods>
 
 	<ofEntity>

@@ -672,9 +672,9 @@
         <startAppearing>
             <Arg>ENTITY_ID</Arg>
         </startAppearing>
-        <startDissapearing>
+        <startDisappearing>
             <Arg>ENTITY_ID</Arg>
-        </startDissapearing>
+        </startDisappearing>
         <setIntuitionAngle>
             <Arg>UINT8</Arg>
         </setIntuitionAngle>

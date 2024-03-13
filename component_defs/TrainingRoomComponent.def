@@ -12,7 +12,14 @@
 			<Arg>UINT64</Arg>
 			<Exposed/>
 		</kickPlayer>
-		
+
+		<removeAllBotsFromTeam>
+			<Args>
+				<teamID>UINT8</teamID>
+			</Args>
+			<Exposed/>
+		</removeAllBotsFromTeam>
+
 		<setReady>
 			<Arg>INT64</Arg>
 			<Exposed/>
@@ -24,7 +31,7 @@
 			<Arg>INT64</Arg>
 			<Exposed/>
 		</sendInvite>
-		
+
 		<revokeInvite>
 			<Arg>INT64</Arg>
 			<Exposed/>
@@ -87,14 +94,24 @@
 			<Exposed/>
 		</unmakeCommander>
 
-		<changeGrants>
+		<setRole>
 			<Args>
-				<grants>INT64</grants>
+				<role>UINT8</role>
 			</Args>
-		</changeGrants>
-	
+			<ReturnValues>
+				<resultCode>INT64</resultCode>
+			</ReturnValues>
+		</setRole>
 	</BaseMethods>
-	
+
+	<ClientMethods>
+		<setRole>
+			<Args>
+				<role>UINT8</role>
+			</Args>
+		</setRole>
+	</ClientMethods>
+
 	<ofEntity>
 		<Account/>
 	</ofEntity>
