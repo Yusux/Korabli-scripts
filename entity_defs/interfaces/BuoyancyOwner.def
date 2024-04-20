@@ -1,4 +1,5 @@
 <root>
+
 	<BaseMethods>
 	</BaseMethods>
 
@@ -6,61 +7,55 @@
 	</ClientMethods>
 
 	<Properties>
+
 		<buoyancyCurrentState>
             <Type> BUOYANCY_STATE </Type>
             <Flags> ALL_CLIENTS  </Flags>
         </buoyancyCurrentState>
+
         <buoyancyRudderIndex>
             <Type> UINT8 </Type>
             <Flags> ALL_CLIENTS  </Flags>
         </buoyancyRudderIndex>
+
         <buoyancyCurrentWaterline>
             <Type> FLOAT </Type>
             <Flags> ALL_CLIENTS  </Flags>
         </buoyancyCurrentWaterline>
+
 	</Properties>
 
 	<TempProperties>
+
 	    <canChangeBuoyancy/>
+	    <buoyancyStates/>
+	    <_availableStates/>
+	    <_currentStateIndex/>
+	    <buoyancySpeedCoef/>
+	    <_buoyancySpeedCoefficient/>
+	    <_isBuoyancyBlocked/>
 
-		<_BuoyancyOwner__oldBuoyancyState/>
-		<_BuoyancyOwner__currentBuoyancySpeedTime/>
-		<_BuoyancyOwner__targetBuoyancySpeedCoef/>
-		<_BuoyancyOwner__prevBuoyancySpeedCoef/>
-		<_BuoyancyOwner__buoyancySpeedTime/>
-		<_BuoyancyOwner__newBuoyancyLevelLock/>
-		<_BuoyancyOwner__currentStateIndex/>
-		<_BuoyancyOwner__availableStates/>
-		<buoyancyAutoStateMinSpeed/>
-		<buoyancyStates/>
+	    <buoyancyTargetWaterline/>
 
-		<buoyancyStateMin/>
-		<buoyancyStateMax/>
-		<buoyancyStateDefaultMax/>
-		<buoyancyMin/>
+	    <buoyancyMin/>
 		<buoyancyMax/>
-		<buoyancyMinStopLine/>
-		<buoyancyMaxStopLine/>
-		<bCurrentStateMinStopLine/>
-		<bCurrentStateMaxStopLine/>
-		<buoyancyTargetWaterline/>
-		<_BuoyancyOwner__isUsingFakeTargetWaterline/>
-		<buoyancySpeedReducer/>
-		<buoyancySpeedCoef/>
-		<stateSpeedCoef/>
-		<buoyancyReducerBorder/>
-		<buoyancyAngleLimit/>
-		<buoyancyIsBlocked/>
-		<shouldUseInvulnerableWaterline/>
 
-		<periscopeRotator/>
-		<buoyancyInvulnerableWaterline/>
-		<detectionBySurfaceHydrophone/>
-		<modifier/>
+	    <buoyancyStateMin/>
+		<buoyancyStateMax/>
+
+	    <buoyancyReducerBorder/>
+
+		<buoyancyAutoStateMinSpeed/>
+
+		<_skipStopLineZone/>
+		<_isFakeTargetWaterline/>
+		<buoyancySpeedCoef/>
+
+		<blockedControls/>
 
 	</TempProperties>
 
 	<CellMethods>
-
 	</CellMethods>
+
 </root>

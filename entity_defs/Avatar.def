@@ -103,6 +103,18 @@
             <Type>VISION</Type>
             <Flags>OWN_CLIENT</Flags>
         </spottedEntities>
+        <worldEffect>
+            <Type>ARRAY
+                <of>WORLD_CLIENT_ACTION_STATE</of>
+            </Type>
+            <Flags>OWN_CLIENT</Flags>
+        </worldEffect>
+        <worldSound>
+            <Type>ARRAY
+                <of>WORLD_CLIENT_ACTION_STATE</of>
+            </Type>
+            <Flags>OWN_CLIENT</Flags>
+        </worldSound>
     </Properties>
     <ClientMethods>
         <torpedoParamsUpdate>
@@ -726,7 +738,7 @@
                     <of>UINT8</of>
                 </consumablesIds>
                 <count>UINT8</count>
-                <reason>UINT8</reason>
+                <reason>REASON_ID</reason>
             </Args>
         </increaseConsumablesCount>
         <increaseSquadronsConsumablesCount>
@@ -736,7 +748,7 @@
                     <of>UINT8</of>
                 </consumablesIds>
                 <count>UINT8</count>
-                <reason>UINT8</reason>
+                <reason>REASON_ID</reason>
             </Args>
         </increaseSquadronsConsumablesCount>
         <onPlaySound>
@@ -777,12 +789,11 @@
             <Arg>UINT8</Arg>
             <Arg>PLANE_ID</Arg>
         </endOwnerlessTracers>
-        <updateDetectionBySurfaceHydrophone>
-            <Arg>BOOL</Arg>
-        </updateDetectionBySurfaceHydrophone>
         <onFeedback>
-            <Arg>BATTLE_EVENT</Arg>
-            <Arg>REASON_ID</Arg>
+            <Args>
+                <battleEvent>BATTLE_EVENT</battleEvent>
+                <reason>REASON_ID</reason>
+            </Args>
         </onFeedback>
         <dev_receiveNavigationDebugData>
             <Arg>ENTITY_ID</Arg>
@@ -832,6 +843,25 @@
             <Arg>UINT8</Arg>
             <Arg>FLOAT</Arg>
         </onOilLeakStateChanged>
+        <setCameraDirection>
+            <Args>
+                <yaw>FLOAT</yaw>
+            </Args>
+        </setCameraDirection>
+        <onPlayWorldEffect>
+            <Args>
+                <effectName>STRING</effectName>
+                <position>VECTOR3</position>
+                <yaw>FLOAT</yaw>
+            </Args>
+        </onPlayWorldEffect>
+        <onPlayWorldSound>
+            <Args>
+                <soundName>STRING</soundName>
+                <position>VECTOR3</position>
+                <yaw>FLOAT</yaw>
+            </Args>
+        </onPlayWorldSound>
     </ClientMethods>
     <CellMethods>
         <useConsumable>

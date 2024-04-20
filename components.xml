@@ -31,4 +31,5 @@
 	<PdataResetComponent/>
 	<StrategicActionsComponent/>
 	<DevFlagsComponent/>
+	<ShipShardsComponent/>
 </root>

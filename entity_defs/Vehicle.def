@@ -84,10 +84,6 @@
             <Type>TEAM_ID</Type>
             <Flags>ALL_CLIENTS</Flags>
         </teamId>
-        <uiEnabled>
-            <Type>BOOL</Type>
-            <Flags>ALL_CLIENTS</Flags>
-        </uiEnabled>
         <isAlive>
             <Type>BOOL</Type>
             <Flags>ALL_CLIENTS</Flags>
@@ -320,16 +316,18 @@
             <Arg>BLOB</Arg>
         </syncShipCracks>
         <makeShipCracksActive></makeShipCracksActive>
+        <interrupt></interrupt>
         <syncShipPhysics>
             <Arg>INT8</Arg>
             <Arg>BLOB</Arg>
             <VariableLengthHeaderSize>2</VariableLengthHeaderSize>
         </syncShipPhysics>
-        <setReloadingStateForWeapon>
+        <setStateForWeapon>
             <Arg>WEAPON_TYPE</Arg>
+            <Arg>BOOL</Arg>
             <Arg>BLOB</Arg>
             <VariableLengthHeaderSize>2</VariableLengthHeaderSize>
-        </setReloadingStateForWeapon>
+        </setStateForWeapon>
         <setUniqueSkills>
             <Arg>BLOB</Arg>
         </setUniqueSkills>
@@ -350,8 +348,11 @@
         <forceReloadTorpedoes></forceReloadTorpedoes>
         <uniqueTriggerActivated></uniqueTriggerActivated>
         <onConsumableEnabled>
-            <Arg>UINT8</Arg>
-            <Arg>BOOL</Arg>
+            <Args>
+                <consumableType>UINT8</consumableType>
+                <battleEvent>BATTLE_EVENT</battleEvent>
+                <reason>REASON_ID</reason>
+            </Args>
         </onConsumableEnabled>
         <onReseted>
             <Arg>BOOL</Arg>
@@ -438,6 +439,25 @@
                 <wildFireState>WILD_FIRE_STATE</wildFireState>
             </Args>
         </setWildFireState>
+        <reloadVehicle></reloadVehicle>
+        <setUIEnabled>
+            <Args>
+                <uiEnabled>BOOL</uiEnabled>
+            </Args>
+        </setUIEnabled>
+        <setWeaponAvailable>
+            <Args>
+                <weaponTypes>ARRAY
+                    <of>UINT8</of>
+                </weaponTypes>
+                <isAvailable>BOOL</isAvailable>
+            </Args>
+        </setWeaponAvailable>
+        <setMovementControlBlocked>
+            <Args>
+                <isBlocked>BOOL</isBlocked>
+            </Args>
+        </setMovementControlBlocked>
     </ClientMethods>
     <CellMethods>
         <onClientEnterWorld>

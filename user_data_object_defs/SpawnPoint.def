@@ -26,6 +26,12 @@
             <Editable> true </Editable>
         </tag>
 
+        <cameraYaw>
+            <Type> FLOAT </Type>
+            <Editable> true </Editable>
+            <Default> 0.0 </Default>
+        </cameraYaw>
+
         <shipLevels>
             <Type>ARRAY <of>UINT8</of></Type>
             <Editable>True</Editable>

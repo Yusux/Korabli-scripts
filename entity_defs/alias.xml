@@ -992,8 +992,8 @@
 			<id><Type>STRING</Type></id>
 			<status><Type>UINT8</Type></status>
 			<startTime><Type>UINT32</Type></startTime>
-			<currentValue><Type>UINT16</Type></currentValue>
-			<targetValue><Type>UINT16</Type></targetValue>
+			<currentValue><Type>UINT32</Type></currentValue>
+			<targetValue><Type>UINT32</Type></targetValue>
 			<type><Type>UINT8</Type></type>
 			<targetValueAchieved><Type>UINT8</Type></targetValueAchieved>
 			<closeTime><Type>UINT8</Type></closeTime>
@@ -1005,6 +1005,42 @@
 		</Properties>
 		<AllowNone>true</AllowNone>
 	</TASKS_STATE>
+
+	<PARTICIPANT_SCORE_IN_ROUND>
+		FIXED_DICT
+		<Properties>
+			<avatarId><Type>ENTITY_ID</Type></avatarId>
+			<place><Type>UINT8</Type></place>
+			<score><Type>UINT32</Type></score>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</PARTICIPANT_SCORE_IN_ROUND>
+
+	<ROUND_STATE>
+		FIXED_DICT
+		<Properties>
+			<staticRoundParams><Type>UINT32</Type></staticRoundParams>
+			<currentRoundInfo><Type>UINT8</Type></currentRoundInfo>
+			<participantsScoreInfo><Type>ARRAY<of>PARTICIPANT_SCORE_IN_ROUND</of></Type></participantsScoreInfo>
+			<loosingParticipants><Type>ARRAY<of>ENTITY_ID</of></Type></loosingParticipants>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</ROUND_STATE>
+
+	<MODEL_STATE>
+		FIXED_DICT
+		<Properties>
+			<id><Type>UINT8</Type></id>
+			<modelIndex><Type>UINT8</Type></modelIndex>
+			<position><Type>VECTOR3</Type></position>
+			<yaw><Type>FLOAT</Type></yaw>
+			<scale><Type>FLOAT</Type></scale>
+			<actionName><Type>STRING</Type></actionName>
+			<matterName><Type>STRING</Type></matterName>
+			<tintName><Type>STRING</Type></tintName>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</MODEL_STATE>
 
 	<ENTITY_STATE_STATE>
 		FIXED_DICT
@@ -1263,6 +1299,8 @@
 			<diplomacy><Type>DIPLOMACY_STATE</Type></diplomacy>
 			<uiInfo><Type>UI_INFO_STATE</Type></uiInfo>
 			<physics><Type>PHYSICS_STATE</Type></physics>
+			<battleRounds><Type>ROUND_STATE</Type></battleRounds>
+			<models><Type>ARRAY<of>MODEL_STATE</of></Type></models>
 		</Properties>
 	</BATTLE_LOGIC_STATE>
 
@@ -1524,6 +1562,7 @@
 			<flags><Type>ARRAY<of>GAMEPARAMS_ID</of></Type></flags>
 			<ensigns><Type>ARRAY<of>GAMEPARAMS_ID</of></Type></ensigns>
 			<drops><Type>ARRAY<of>GAMEPARAMS_ID</of></Type></drops>
+			<models><Type>ARRAY<of>STRING</of></Type></models>
 		</Properties>
 	</PREREQUISITE_DATA>
 

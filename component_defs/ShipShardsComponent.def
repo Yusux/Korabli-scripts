@@ -1,0 +1,12 @@
+<root>
+	<ClientMethods>
+		<startSyncDelay/>
+	</ClientMethods>
+
+	<BaseMethods>
+	</BaseMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+</root>

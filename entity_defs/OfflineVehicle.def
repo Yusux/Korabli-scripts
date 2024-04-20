@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<root>
+    <Properties>
+        <shipConfig>
+            <Type>SHIP_CONFIG</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </shipConfig>
+    </Properties>
+</root>
+

@@ -15,6 +15,7 @@
 		<ReplayLeech />
 		<ReplayConnectionHandler />
 		<InteractiveZone />
+		<OfflineVehicle />
 	</ClientServerEntities>
 	
 	</root>
