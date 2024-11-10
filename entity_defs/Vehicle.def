@@ -146,11 +146,6 @@
             <Type>FLOAT32</Type>
             <Flags>ALL_CLIENTS</Flags>
         </draught>
-        <isFogHornOn>
-            <Type>BOOL</Type>
-            <Flags>ALL_CLIENTS</Flags>
-            <SendLatestOnly>true</SendLatestOnly>
-        </isFogHornOn>
         <blockedControls>
             <Type>BOOL</Type>
             <Flags>ALL_CLIENTS</Flags>
@@ -199,6 +194,11 @@
             <Type>UINT8</Type>
             <Flags>ALL_CLIENTS</Flags>
         </oilLeakState>
+        <movementControlBlockType>
+            <Type>UINT8</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>0</Default>
+        </movementControlBlockType>
     </Properties>
     <ClientMethods>
         <onAvatarReady></onAvatarReady>
@@ -260,6 +260,19 @@
         <syncTorpedoState>
             <Arg>UINT8</Arg>
         </syncTorpedoState>
+        <syncArmorSegment>
+            <Args>
+                <index>UINT8</index>
+                <thickness>FLOAT</thickness>
+            </Args>
+        </syncArmorSegment>
+        <syncArmorSegments>
+            <Args>
+                <segments>ARRAY
+                    <of>FLOAT</of>
+                </segments>
+            </Args>
+        </syncArmorSegments>
         <kill>
             <Arg>INT8</Arg>
             <Arg>UINT32</Arg>
@@ -277,11 +290,12 @@
             <Arg>FLOAT</Arg>
         </bodySinkPartLurched>
         <shootTorpedo>
-            <Arg>INT32</Arg>
-            <Arg>VECTOR3</Arg>
-            <Arg>INT32</Arg>
-            <Arg>INT32</Arg>
-            <Arg>BOOL</Arg>
+            <Args>
+                <gunID>INT32</gunID>
+                <direction>VECTOR3</direction>
+                <salvoID>INT32</salvoID>
+                <numShotsBefore>INT32</numShotsBefore>
+            </Args>
         </shootTorpedo>
         <shootDepthCharge>
             <Arg>INT32</Arg>
@@ -299,6 +313,10 @@
             <Arg>WEAPON_TYPE</Arg>
             <Arg>GUN_BITS</Arg>
         </shootOnClient>
+        <shootChargeableDrumOnClient>
+            <Arg>WEAPON_TYPE</Arg>
+            <Arg>CHARGEABLE_DRUM_GUN_BITS</Arg>
+        </shootChargeableDrumOnClient>
         <chargeGuns>
             <Arg>WEAPON_TYPE</Arg>
             <Arg>GUN_BITS</Arg>
@@ -345,17 +363,23 @@
         <receiveMirrorDamage>
             <Arg>FLOAT</Arg>
         </receiveMirrorDamage>
-        <forceReloadTorpedoes></forceReloadTorpedoes>
+        <forceReloadWeapon>
+            <Args>
+                <weaponType>WEAPON_TYPE</weaponType>
+            </Args>
+        </forceReloadWeapon>
         <uniqueTriggerActivated></uniqueTriggerActivated>
         <onConsumableEnabled>
             <Args>
-                <consumableType>UINT8</consumableType>
                 <battleEvent>BATTLE_EVENT</battleEvent>
                 <reason>REASON_ID</reason>
             </Args>
         </onConsumableEnabled>
         <onReseted>
-            <Arg>BOOL</Arg>
+            <Args>
+                <resetConsumablesCount>BOOL</resetConsumablesCount>
+                <initialSpeed>FLOAT</initialSpeed>
+            </Args>
         </onReseted>
         <setAirDefenseState>
             <Arg>BLOB</Arg>
@@ -376,7 +400,7 @@
             <Arg>FLOAT</Arg>
         </setNewSpeed>
         <shootWaveGun>
-            <Arg>UINT8</Arg>
+            <Arg>GUN_ID</Arg>
             <Arg>FLOAT</Arg>
         </shootWaveGun>
         <receiveGunSyncRotations>
@@ -453,11 +477,15 @@
                 <isAvailable>BOOL</isAvailable>
             </Args>
         </setWeaponAvailable>
-        <setMovementControlBlocked>
+        <startFoghorn></startFoghorn>
+        <stopFoghorn></stopFoghorn>
+        <syncFoghorn>
             <Args>
-                <isBlocked>BOOL</isBlocked>
+                <state>UINT8</state>
+                <duration>FLOAT</duration>
+                <delay>FLOAT</delay>
             </Args>
-        </setMovementControlBlocked>
+        </syncFoghorn>
     </ClientMethods>
     <CellMethods>
         <onClientEnterWorld>
@@ -483,6 +511,9 @@
                 <entityId>ENTITY_ID</entityId>
             </Args>
         </dev_teleportToEntity>
+        <dev_teleportToClosestAlly>
+            <Exposed></Exposed>
+        </dev_teleportToClosestAlly>
         <dev_setVehicleHealth>
             <Exposed></Exposed>
             <Arg>INT32</Arg>
@@ -499,12 +530,25 @@
                 <replacedParams>PICKLED_BLOB</replacedParams>
             </Args>
         </dev_updatePhysics>
+        <dev_damageArmorSegment>
+            <Exposed></Exposed>
+            <Args>
+                <segmentIndex>UINT8</segmentIndex>
+                <thicknessDamage>FLOAT</thicknessDamage>
+            </Args>
+        </dev_damageArmorSegment>
         <send_commonCMD>
             <Exposed>OWN_CLIENT</Exposed>
             <Args>
                 <command>QUICK_COMMAND</command>
             </Args>
         </send_commonCMD>
+        <startFoghorn>
+            <Exposed></Exposed>
+        </startFoghorn>
+        <stopFoghorn>
+            <Exposed></Exposed>
+        </stopFoghorn>
     </CellMethods>
     <BaseMethods></BaseMethods>
     <shouldBackup>false</shouldBackup>

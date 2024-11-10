@@ -37,4 +37,11 @@
 		<Account/>
 		<Avatar/>
 	</ofEntity>
+
+	<ofBWComponent>
+		<base/>
+		<client/>
+		<cell/>
+		<bot/>
+	</ofBWComponent>
 </root>

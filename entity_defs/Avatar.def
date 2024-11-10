@@ -510,12 +510,44 @@
         <receiveShootDC>
             <Arg>FLOAT</Arg>
         </receiveShootDC>
-        <onChatMessage>
-            <Arg>PLAYER_ID</Arg>
-            <Arg>STRING</Arg>
-            <Arg>STRING</Arg>
-            <Arg>STRING</Arg>
-        </onChatMessage>
+        <onChatMessageRegular>
+            <Args>
+                <senderId>PLAYER_ID</senderId>
+                <channelId>STRING</channelId>
+                <message>STRING</message>
+            </Args>
+        </onChatMessageRegular>
+        <onChatMessageNotification>
+            <Args>
+                <senderId>PLAYER_ID</senderId>
+                <channelId>STRING</channelId>
+                <message>STRING</message>
+                <extraData>CHAT_SYSTEM_MESSAGE_NOTIFICATION</extraData>
+            </Args>
+        </onChatMessageNotification>
+        <onChatMessageBanChat>
+            <Args>
+                <channelId>STRING</channelId>
+                <extraData>CHAT_SYSTEM_MESSAGE_BAN</extraData>
+            </Args>
+        </onChatMessageBanChat>
+        <onChatMessageSystemDuty>
+            <Args>
+                <channelId>STRING</channelId>
+                <messageType>UINT8</messageType>
+                <msg>STRING</msg>
+            </Args>
+        </onChatMessageSystemDuty>
+        <onChatMessagePraise>
+            <Args>
+                <praiseTopicId>UINT8</praiseTopicId>
+            </Args>
+        </onChatMessagePraise>
+        <onChatMessageDynamicDivision>
+            <Args>
+                <extraData>DYNAMIC_DIVISION_CHAT_SYSTEM_MESSAGE</extraData>
+            </Args>
+        </onChatMessageDynamicDivision>
         <onShipCollision>
             <Arg>ENTITY_ID</Arg>
             <Arg>VECTOR3</Arg>
@@ -551,7 +583,9 @@
             </VariableLengthHeaderSize>
         </onArenaStateReceived>
         <receiveChatHistory>
-            <Arg>BLOB</Arg>
+            <Args>
+                <messageHistory>MSGPACK_BLOB</messageHistory>
+            </Args>
         </receiveChatHistory>
         <onCheckGamePing>
             <Arg>UINT64</Arg>
@@ -795,10 +829,6 @@
                 <reason>REASON_ID</reason>
             </Args>
         </onFeedback>
-        <dev_receiveNavigationDebugData>
-            <Arg>ENTITY_ID</Arg>
-            <Arg>NAVIGATION_DEBUG_DATA</Arg>
-        </dev_receiveNavigationDebugData>
         <updateBuoyancyRudderCruise>
             <Arg>FLOAT</Arg>
         </updateBuoyancyRudderCruise>
@@ -926,9 +956,12 @@
             <Arg>WEAPON_TYPE</Arg>
             <Arg>GAMEPARAMS_ID</Arg>
         </setWeaponAmmo>
-        <forceTorpedoesReload>
+        <forceReloadWeapon>
             <Exposed>OWN_CLIENT</Exposed>
-        </forceTorpedoesReload>
+            <Args>
+                <weaponType>WEAPON_TYPE</weaponType>
+            </Args>
+        </forceReloadWeapon>
         <moveTo>
             <Exposed>OWN_CLIENT</Exposed>
             <Arg>VECTOR3</Arg>
@@ -1028,83 +1061,10 @@
         <onClientReady>
             <Exposed>OWN_CLIENT</Exposed>
         </onClientReady>
-        <dev_switchIdealGunHack>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>UINT8</Arg>
-        </dev_switchIdealGunHack>
-        <dev_switchIdealATBASelectedGunId>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>UINT8</Arg>
-        </dev_switchIdealATBASelectedGunId>
-        <dev_switchCameraShootHack>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>BOOL</Arg>
-        </dev_switchCameraShootHack>
-        <dev_setFloatCellAppData>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>STRING</Arg>
-            <Arg>FLOAT</Arg>
-        </dev_setFloatCellAppData>
-        <dev_setFloatShipParam>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>BLOB</Arg>
-            <Arg>FLOAT</Arg>
-        </dev_setFloatShipParam>
-        <dev_bot_spawnSplashAtShootPos>
-            <Exposed>OWN_CLIENT</Exposed>
-        </dev_bot_spawnSplashAtShootPos>
-        <dev_requestNavigationDebugData>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>ENTITY_ID</Arg>
-        </dev_requestNavigationDebugData>
         <checkGamePing>
             <Arg>UINT64</Arg>
             <Exposed>OWN_CLIENT</Exposed>
         </checkGamePing>
-        <dev_killEntity>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>TARGET_ID</Arg>
-        </dev_killEntity>
-        <dev_setPhysicParams>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>STRING</Arg>
-            <Arg>FLOAT</Arg>
-        </dev_setPhysicParams>
-        <playFogHorn>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Args>
-                <start>BOOL</start>
-            </Args>
-        </playFogHorn>
-        <dev_damageSquadron>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>INT8</Arg>
-            <Arg>ARRAY
-                <of>UINT8</of>
-            </Arg>
-            <Arg>FLOAT</Arg>
-        </dev_damageSquadron>
-        <dev_teleportSquadron>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>PLANE_ID</Arg>
-            <Arg>VECTOR3</Arg>
-            <Arg>NULLABLE_FLOAT</Arg>
-        </dev_teleportSquadron>
-        <dev_setSquadronDebugOption>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>UINT16</Arg>
-            <Arg>BOOL</Arg>
-        </dev_setSquadronDebugOption>
-        <dev_respawnPlanes>
-            <Exposed>OWN_CLIENT</Exposed>
-        </dev_respawnPlanes>
-        <dev_spawnMinefield>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Args>
-                <position>VECTOR3</position>
-                <paramsId>GAMEPARAMS_ID</paramsId>
-            </Args>
-        </dev_spawnMinefield>
         <setObservedTeamId>
             <Exposed>OWN_CLIENT</Exposed>
             <Arg>TEAM_ID</Arg>
@@ -1143,25 +1103,13 @@
             <Exposed>OWN_CLIENT</Exposed>
             <Arg>BOOL</Arg>
         </changeAutopilotState>
-        <dev_reloadWeapons>
+        <onMouseInput>
             <Exposed>OWN_CLIENT</Exposed>
-        </dev_reloadWeapons>
+        </onMouseInput>
         <setControlledByPlayer>
             <Exposed>OWN_CLIENT</Exposed>
             <Arg>BOOL</Arg>
         </setControlledByPlayer>
-        <dev_setBlind>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>BOOL</Arg>
-        </dev_setBlind>
-        <dev_enableAllVision>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>BOOL</Arg>
-        </dev_enableAllVision>
-        <dev_reloadShipParams>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>STRING</Arg>
-        </dev_reloadShipParams>
         <send_commonCMD>
             <Exposed>OWN_CLIENT</Exposed>
             <Args>
@@ -1205,26 +1153,6 @@
             <Arg>UNICODE_STRING</Arg>
             <Exposed>OWN_CLIENT</Exposed>
         </removeBan>
-        <dev_earnAchievementInBattle>
-            <Arg>UINT32</Arg>
-            <Flags>OWN_CLIENT</Flags>
-            <Exposed>OWN_CLIENT</Exposed>
-        </dev_earnAchievementInBattle>
-        <dev_spawnBot>
-            <Args>
-                <shipName>STRING</shipName>
-                <teamId>TEAM_ID</teamId>
-                <x>INT16</x>
-                <z>INT16</z>
-                <yaw>INT16</yaw>
-                <aiConfig>UINT16</aiConfig>
-                <botName>STRING</botName>
-                <botRoles>ARRAY
-                    <of>STRING</of>
-                </botRoles>
-            </Args>
-            <Exposed>OWN_CLIENT</Exposed>
-        </dev_spawnBot>
         <tryCreateDynamicDivision>
             <Exposed>OWN_CLIENT</Exposed>
             <Args>

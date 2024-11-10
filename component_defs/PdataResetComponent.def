@@ -68,4 +68,8 @@
 	<ofEntity>
 		<AccountController/>
 	</ofEntity>
+	
+	<ofBWComponent>
+		<base/>
+	</ofBWComponent>
 </root>

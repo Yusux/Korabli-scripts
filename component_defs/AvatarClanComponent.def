@@ -1,23 +1,20 @@
 <root>
 	<BaseMethods>
-
-		<rejectInvite>
-			<Args>
-				<divisionID>ENTITY_ID</divisionID>
-			</Args>
+		<sendInvite>
+			<Arg> DB_ID </Arg>
 			<Exposed/>
-		</rejectInvite>
-	
+		</sendInvite>
 	</BaseMethods>
-	
+
+
 	<ofEntity>
 		<Avatar/>
 	</ofEntity>
-	
+
 	<ofBWComponent>
 		<base/>
+		<bot/>
 		<client/>
 		<cell/>
-		<bot/>
 	</ofBWComponent>
 </root>

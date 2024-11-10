@@ -87,4 +87,8 @@
 	<ofService>
 		<MasterService/>
 	</ofService>
+	
+	<ofBWComponent>
+		<service/>
+	</ofBWComponent>
 </root>

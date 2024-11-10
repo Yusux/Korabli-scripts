@@ -13,13 +13,6 @@
 		    </Args>
 		</requestCellHistory>
 
-		<devChangeProgress>
-		    <Exposed/>
-		    <Args>
-		        <shipId> SHIP_ID </shipId>
-		        <taskProgress> ACES_TASK_PROGRESS </taskProgress>
-		    </Args>
-		</devChangeProgress>
     </BaseMethods>
 
     <ClientMethods>
@@ -35,4 +28,10 @@
     <ofEntity>
         <Account/>
     </ofEntity>
+	
+	<ofBWComponent>
+		<base/>
+		<bot/>
+		<client/>
+	</ofBWComponent>
 </root>

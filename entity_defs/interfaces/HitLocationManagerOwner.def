@@ -36,14 +36,6 @@
 			<Arg>	BOOL    </Arg> <!-- isStart -->
 		</setBurnFlood>
 
-
-		<dev_detonate>
-			<Exposed/>
-			<Arg>	STRING	</Arg> <!-- hitLocation name -->
-			<Arg>	INT32	</Arg> <!-- attacker id -->
-			<Arg>	STRING	</Arg> <!-- wpn -->
-		</dev_detonate>
-
 		<dev_receiveHit>
 		    <Exposed/>
 		    <Flags> OWN_CLIENT </Flags>
@@ -113,11 +105,6 @@
 			<Flags>			ALL_CLIENTS		</Flags>
 			<Default>       0               </Default>
 		</burningFlags>
-		<detonationEnabled>
-			<Type>			BOOL			</Type>
-			<Flags>			CELL_PUBLIC		</Flags>
-			<Default>       1            </Default>			
-		</detonationEnabled>
 		<friendlyFireEnabled>
 			<Type>			BOOL			</Type>
 			<Flags>			CELL_PUBLIC		</Flags>
@@ -175,6 +162,7 @@
 		<_HitLocationManagerOwner__regenVary/>
 		<_HitLocationManagerOwner__healthRegenPercent/>
 		<_HitLocationManagerOwner__healthRegenSpeed/>
+		<_HitLocationManagerOwner__temporaryHeals/>
 		<healthToRegenerate/>
 	</TempProperties>
 </root>

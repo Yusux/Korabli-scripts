@@ -1,8 +1,5 @@
 <root>
 	<BaseMethods>
-		<loginVoiceChat>
-			<Exposed/>
-		</loginVoiceChat>
 	
 		<joinVoiceChat>
 			<Exposed/>

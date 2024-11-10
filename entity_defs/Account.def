@@ -64,12 +64,18 @@
             <Arg>PYTHON</Arg>
         </onTotalUsersCountUpdate>
         <onGameRoomStateInit>
-            <Arg>INT16</Arg>
-            <Arg>UINT32</Arg>
-            <Arg>UINT16</Arg>
-            <Arg>UINT16</Arg>
-            <Arg>GAME_MODE</Arg>
-            <Arg>GAMEPARAMS_ID</Arg>
+            <Args>
+                <mapIdx>INT16</mapIdx>
+                <queueType>UINT32</queueType>
+                <battleType>UINT16</battleType>
+                <duration>UINT16</duration>
+                <gameMode>GAME_MODE</gameMode>
+                <gameTypeGameParamsId>GAMEPARAMS_ID</gameTypeGameParamsId>
+                <isFogOfWar>BOOL</isFogOfWar>
+                <teamNames>ARRAY
+                    <of>UNICODE_STRING</of>
+                </teamNames>
+            </Args>
         </onGameRoomStateInit>
         <inviteToPreBattle>
             <Arg>PRE_BATTLE_INVITE_DEF</Arg>
@@ -118,35 +124,18 @@
             <Arg>UINT32</Arg>
             <Arg>UINT8</Arg>
         </onPreBattleCountdown>
-        <leavePreBattle>
+        <leaveDivision>
             <Arg>UINT8</Arg>
-            <Arg>UINT8</Arg>
-        </leavePreBattle>
-        <enterTrainingRoom>
-            <Arg>BLOB</Arg>
-            <Arg>COUNTDOWN_INFO</Arg>
-            <Arg>UINT8</Arg>
-            <Arg>BOOL</Arg>
-            <VariableLengthHeaderSize>
-                <WarnLevel>none</WarnLevel>
-            </VariableLengthHeaderSize>
-        </enterTrainingRoom>
-        <setTrainingRoomDisabled>
-            <Arg>INT8</Arg>
-        </setTrainingRoomDisabled>
-        <setTrainingRoomMaxObservers>
-            <Arg>INT8</Arg>
-        </setTrainingRoomMaxObservers>
-        <receivePreBattlePlayerData>
+        </leaveDivision>
+        <receiveDivisionPlayerData>
             <Arg>PRE_BATTLE_ID</Arg>
             <Arg>BLOB</Arg>
             <Arg>BOOL</Arg>
-            <Arg>INT32</Arg>
             <isBuffered>True</isBuffered>
             <VariableLengthHeaderSize>
                 <WarnLevel>none</WarnLevel>
             </VariableLengthHeaderSize>
-        </receivePreBattlePlayerData>
+        </receiveDivisionPlayerData>
         <onOwnerChanged>
             <Arg>PLAYER_ID</Arg>
         </onOwnerChanged>
@@ -156,20 +145,38 @@
             <Arg>BOOL</Arg>
         </receiveSelectedQueueType>
         <receiveLockData>
-            <Arg>BLOB</Arg>
+            <Args>
+                <divisionID>ENTITY_ID</divisionID>
+                <isLocked>BOOL</isLocked>
+            </Args>
         </receiveLockData>
         <leaveBattleSession>
             <Arg>UINT8</Arg>
             <Arg>BLOB</Arg>
         </leaveBattleSession>
-        <onChatMessage>
-            <Arg>DB_ID</Arg>
-            <Arg>STRING</Arg>
-            <Arg>STRING</Arg>
-            <Arg>STRING</Arg>
-            <Arg>STRING</Arg>
-            <Arg>UINT32</Arg>
-        </onChatMessage>
+        <onChatMessageRegular>
+            <Args>
+                <senderDBID>DB_ID</senderDBID>
+                <senderName>STRING</senderName>
+                <channelId>STRING</channelId>
+                <message>STRING</message>
+                <messageCreationTime>UINT32</messageCreationTime>
+            </Args>
+        </onChatMessageRegular>
+        <onChatMessageBanChat>
+            <Args>
+                <channelId>STRING</channelId>
+                <extraData>CHAT_SYSTEM_MESSAGE_BAN</extraData>
+            </Args>
+        </onChatMessageBanChat>
+        <onChatMessageSystemDuty>
+            <Args>
+                <channelId>STRING</channelId>
+                <messageType>UINT8</messageType>
+                <msg>STRING</msg>
+                <messageCreationTime>UINT32</messageCreationTime>
+            </Args>
+        </onChatMessageSystemDuty>
         <onActionFailed>
             <Arg>INT16</Arg>
             <Arg>INT16</Arg>
@@ -193,16 +200,13 @@
         <onTokenReceiveTimeout>
             <Arg>UINT8</Arg>
         </onTokenReceiveTimeout>
-        <dev_logConsole>
-            <Arg>STRING</Arg>
-        </dev_logConsole>
         <onCheckGamePing>
             <Arg>UINT64</Arg>
         </onCheckGamePing>
         <setTrace>
             <Arg>BOOL</Arg>
         </setTrace>
-        <curVersion_13_3_0_8275422></curVersion_13_3_0_8275422>
+        <curVersion_13_10_0_8793441></curVersion_13_10_0_8793441>
         <updateSSEProgress>
             <Arg>STRING</Arg>
             <VariableLengthHeaderSize>
@@ -325,11 +329,6 @@
         <updateWalletStatus>
             <Arg>BOOL</Arg>
         </updateWalletStatus>
-        <onGetClanBattlesStage>
-            <Arg>UINT32</Arg>
-            <Arg>STRING</Arg>
-            <Arg>UINT8</Arg>
-        </onGetClanBattlesStage>
         <onUpdateSplitCurrency>
             <Arg>UINT32</Arg>
             <Arg>UINT32</Arg>
@@ -430,10 +429,6 @@
             <Arg>STRING</Arg>
             <Arg>STRING</Arg>
         </chatMessage>
-        <dev_bot_setTestBattleParams>
-            <Exposed></Exposed>
-            <Arg>BLOB</Arg>
-        </dev_bot_setTestBattleParams>
         <checkGamePing>
             <Arg>UINT64</Arg>
             <Exposed></Exposed>
@@ -446,24 +441,6 @@
             <Exposed></Exposed>
             <Arg>STRING</Arg>
         </newTraces>
-        <dev_resetDailyLimits>
-            <Exposed></Exposed>
-        </dev_resetDailyLimits>
-        <dev_resetAbuse>
-            <Exposed></Exposed>
-        </dev_resetAbuse>
-        <dev_resetRecidivism>
-            <Exposed></Exposed>
-        </dev_resetRecidivism>
-        <dev_setBattlesToClean>
-            <Exposed></Exposed>
-        </dev_setBattlesToClean>
-        <dev_resetAbuseRating>
-            <Exposed></Exposed>
-        </dev_resetAbuseRating>
-        <dev_resetBranchDrops>
-            <Exposed></Exposed>
-        </dev_resetBranchDrops>
         <executeTransactionCl>
             <Exposed></Exposed>
             <Arg>UINT32</Arg>
@@ -471,27 +448,6 @@
             <Arg>INT32</Arg>
             <Arg>BOOL</Arg>
         </executeTransactionCl>
-        <dev_exportAccountToWeb>
-            <Arg>BOOL</Arg>
-            <Exposed></Exposed>
-        </dev_exportAccountToWeb>
-        <dev_receiveExternalNotification>
-            <Arg>UINT16</Arg>
-            <Exposed></Exposed>
-        </dev_receiveExternalNotification>
-        <dev_setAbuseStatus>
-            <Exposed></Exposed>
-            <Arg>UINT8</Arg>
-        </dev_setAbuseStatus>
-        <dev_setAbuseRecidivism>
-            <Exposed></Exposed>
-            <Arg>STRING</Arg>
-            <Arg>FLOAT</Arg>
-        </dev_setAbuseRecidivism>
-        <dev_setAbuseRating>
-            <Exposed></Exposed>
-            <Arg>FLOAT</Arg>
-        </dev_setAbuseRating>
         <testInvoice>
             <Args>
                 <invoiceData>MSGPACK_BLOB</invoiceData>

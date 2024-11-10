@@ -48,6 +48,10 @@
             <Type>BOOL</Type>
             <Flags>ALL_CLIENTS</Flags>
         </isFogOfWar>
+        <isViewShipInfoDisabled>
+            <Type>BOOL</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </isViewShipInfoDisabled>
         <battleResult>
             <Type>BATTLE_RESULT</Type>
             <Flags>ALL_CLIENTS</Flags>
@@ -56,6 +60,11 @@
             <Type>VECTOR3</Type>
             <Flags>ALL_CLIENTS</Flags>
         </playerShipFoamEmission>
+        <useAviaZoneVision>
+            <Type>BOOL</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>False</Default>
+        </useAviaZoneVision>
     </Properties>
     <ClientMethods>
         <onPlayWorldEffect>

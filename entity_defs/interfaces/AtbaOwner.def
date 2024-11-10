@@ -12,7 +12,7 @@
 	
 	<ClientMethods>
 		<shootATBAGuns>
-			<Arg>	UINT32	</Arg>
+			<Arg>	GUN_BITS	</Arg>
 		</shootATBAGuns>
 	</ClientMethods>
 	

@@ -69,4 +69,8 @@
 	<ofService>
 	    <SuperService/>
 	</ofService>
+	
+	<ofBWComponent>
+		<service/>
+	</ofBWComponent>
 </root>

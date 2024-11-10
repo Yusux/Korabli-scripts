@@ -7,32 +7,6 @@
 		<finalScreenShown>
 			<Exposed/>
 		</finalScreenShown>
-		<dev_setAutoProgress>
-			<!-- set auto add players points active. -->
-			<Arg> BOOL </Arg>
-			<Exposed/>
-		</dev_setAutoProgress>
-        <dev_updateTaskProgress>
-            <Exposed/>
-            <Args>
-                <targetTaskId> STRING </targetTaskId>
-                <progress> UINT32 </progress>
-            </Args>
-        </dev_updateTaskProgress>
-		<dev_changeDay>
-			 <Exposed/>
-		</dev_changeDay>
-		<devRequestStageStats>
-			 <Exposed/>
-		</devRequestStageStats>
-
-		<dev_changeStagePoints>
-			<!-- teams stage points -->
-			<Arg> UINT32 </Arg>
-			<!-- personal stage points  -->
-			<Arg> UINT32 </Arg>
-			 <Exposed/>
-		</dev_changeStagePoints>
 
 	</BaseMethods>
 
@@ -59,4 +33,10 @@
 	<ofEntity>
 		<Account/>
 	</ofEntity>
+	
+	<ofBWComponent>
+		<base/>
+		<bot/>
+		<client/>
+	</ofBWComponent>
 </root>

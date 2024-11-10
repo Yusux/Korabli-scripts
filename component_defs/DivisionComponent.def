@@ -1,4 +1,12 @@
 <root>
+
+	<Properties>
+		<_DivisionComponent__divisionMBox>
+			<Type> MAILBOX </Type>
+			<Flags> BASE </Flags>
+		</_DivisionComponent__divisionMBox>
+	</Properties>
+
 	<BaseMethods>
 		<start>
 			<Args>
@@ -93,53 +101,6 @@
 			</Args>
 		</syncPreBattleDef>
 
-		<dev_addBot>
-			<Args>
-				<botOrOwnerShipID>UINT32</botOrOwnerShipID>
-				<needToGenerateRandomShipId>BOOL</needToGenerateRandomShipId>
-			</Args>
-			<Exposed/>
-		</dev_addBot>
-
-		<dev_removeAllBots>
-			<Exposed/>
-		</dev_removeAllBots>
-
-		<dev_setBotsReady>
-			<Exposed/>
-		</dev_setBotsReady>
-
-		<dev_kickBot>
-			<Args>
-				<botId>PLAYER_ID</botId>
-			</Args>
-		</dev_kickBot>
-
-		<dev_inviteBotToDynamicDivision>
-			<Args>
-				<botDef>PLAYER_DEF</botDef>
-			</Args>
-			<ReturnValues>
-				<result> BOOL </result>
-			</ReturnValues>
-		</dev_inviteBotToDynamicDivision>
-
-		<dev_removeBotFromDynamicDivision>
-			<Args>
-				<botID> PLAYER_ID </botID>
-			</Args>
-			<ReturnValues>
-				<result> BOOL </result>
-			</ReturnValues>
-		</dev_removeBotFromDynamicDivision>
-
-		<dev_sendNewOwnerBotToDynamicDivisionManager>
-			<Args>
-				<botID>PLAYER_ID</botID>
-				<divisionId>PRE_BATTLE_ID</divisionId>
-			</Args>
-		</dev_sendNewOwnerBotToDynamicDivisionManager>
-
 	</BaseMethods>
 
 	<ClientMethods>
@@ -153,4 +114,10 @@
 	<ofEntity>
 		<Account/>
 	</ofEntity>
+
+	<ofBWComponent>
+		<base/>
+		<client/>
+		<bot/>
+	</ofBWComponent>
 </root>

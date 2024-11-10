@@ -20,38 +20,6 @@
 			</Args>
 			<Exposed/>
 		</requestRankedDossier>
-		<dev_getRankedStars>
-			<Args>
-				<stars> INT8 </stars>
-			</Args>
-			<Exposed/>
-		</dev_getRankedStars>
-		<dev_resetRankedSeason>
-			<Args>
-				<seasonId> INT16 </seasonId>
-			</Args>
-			<Exposed/>
-		</dev_resetRankedSeason>
-		<dev_finishRankedSprint>
-			<Args>
-			</Args>
-			<Exposed/>
-		</dev_finishRankedSprint>
-		<dev_finishRankedSeason>
-			<Args>
-			</Args>
-			<Exposed/>
-		</dev_finishRankedSeason>
-		<dev_setFakeBattlesResults>
-			<Args>
-				<result> INT8 </result>
-				<place> INT8 </place>
-				<isAfk> BOOL </isAfk>
-				<isLeaver> BOOL </isLeaver>
-				<isTShooter> BOOL </isTShooter>
-			</Args>
-			<Exposed/>
-		</dev_setFakeBattlesResults>
 	</BaseMethods>
 	
 	<ClientMethods>
@@ -70,4 +38,10 @@
 	<ofEntity>
 		<Account/>
 	</ofEntity>
+	
+	<ofBWComponent>
+		<base/>
+		<bot/>
+		<client/>
+	</ofBWComponent>
 </root>

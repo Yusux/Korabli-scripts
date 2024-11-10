@@ -48,7 +48,7 @@
 	    </group>
 
 	    <hidden>
-		    <Type>BOOL</Type>
+		    <Type> UINT8 </Type>
             <Editable>True</Editable>
             <Default> 0 </Default>
 	    </hidden>

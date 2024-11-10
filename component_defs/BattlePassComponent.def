@@ -29,12 +29,6 @@
 				<result>BOOL</result>
 			</ReturnValues>
 		</claimAllRewards>
-		<dev_changeBattlePassType>
-			<Exposed/>
-			<Args>
-				<newType> UINT8 </newType>
-			</Args>
-		</dev_changeBattlePassType>
 	</BaseMethods>
 
 	<ClientMethods>
@@ -52,5 +46,11 @@
 	<ofEntity>
 		<Account/>
 	</ofEntity>
+	
+	<ofBWComponent>
+		<base/>
+		<bot/>
+		<client/>
+	</ofBWComponent>
 </root>
 

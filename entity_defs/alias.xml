@@ -17,7 +17,8 @@
 	<ENTITY_ID>INT32</ENTITY_ID>
 	<WEAPON_TYPE>UINT8</WEAPON_TYPE>
 	<GUN_ID>UINT8</GUN_ID>
-	<GUN_BITS>UINT16</GUN_BITS>
+	<GUN_BITS>UINT64</GUN_BITS>
+	<CHARGEABLE_DRUM_GUN_BITS>UINT16</CHARGEABLE_DRUM_GUN_BITS>
 	<PLANE_ID>INT64</PLANE_ID>
 	<TARGET_ID>INT64</TARGET_ID>			<!-- place in which we can use PLANE_ID or ENTITY_ID -->
 	<MASTER_ID>UINT32</MASTER_ID>
@@ -41,6 +42,19 @@
 	<FIELD_ID>UINT16</FIELD_ID>
 	<HIT_TYPE>UINT8</HIT_TYPE>
 	<BUOYANCY_STATE>UINT8</BUOYANCY_STATE>
+	<PREMADE_ID>UINT16</PREMADE_ID>
+
+	<MSGPACK_BLOB>
+		USER_TYPE
+		<Type>BLOB</Type>
+		<implementedBy>MsgPackCustomConverter.converter</implementedBy>
+	</MSGPACK_BLOB>
+
+	<PICKLED_BLOB>
+		USER_TYPE
+		<Type>BLOB</Type>
+		<implementedBy>PickledBlobConverter.converter</implementedBy>
+	</PICKLED_BLOB>
 
 	<ZIPPED_BLOB>
 		USER_TYPE
@@ -81,6 +95,40 @@
 			<bySmoke><Type>FLOAT</Type></bySmoke>
 		</Properties>
 	</VISIBILITY_DISTANCES>
+
+	<CHAT_SYSTEM_MESSAGE_BAN>
+		FIXED_DICT
+		<Properties>
+			<type><Type>UINT8</Type></type>
+			<expiry><Type>UINT32</Type></expiry>
+			<reason><Type>STRING</Type></reason>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</CHAT_SYSTEM_MESSAGE_BAN>
+
+	<CHAT_SYSTEM_MESSAGE_NOTIFICATION>
+		FIXED_DICT
+		<Properties>
+			<notificationFlag><Type>UINT8</Type></notificationFlag>
+			<needLocalization><Type>BOOL</Type></needLocalization>
+			<messageData><Type>ARRAY<of>STRING</of></Type></messageData>
+			<senderName><Type>STRING</Type></senderName>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</CHAT_SYSTEM_MESSAGE_NOTIFICATION>
+
+	<DYNAMIC_DIVISION_CHAT_SYSTEM_MESSAGE>
+		FIXED_DICT
+		<Properties>
+			<type><Type>UINT8</Type></type>
+			<preBattleSign><Type>INT8</Type></preBattleSign>
+			<playerName><Type>STRING</Type></playerName>
+			<prebattleId><Type>DB_ID</Type></prebattleId>
+			<playerAvatarId><Type>UINT32</Type></playerAvatarId>
+			<playerClanTag><Type>UNICODE_STRING</Type></playerClanTag>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</DYNAMIC_DIVISION_CHAT_SYSTEM_MESSAGE>
 
 	<VISIBILITY_BY_CLIENTS>
 		ARRAY<of>AVATAR_ID</of>
@@ -136,6 +184,16 @@
 		</Properties>
 	</WEAPON_LOCK_STATE>
 
+	<TEAM_SETTINGS>
+		FIXED_DICT
+		<Properties>
+			<dockTeamID><Type> TEAM_ID </Type></dockTeamID>
+			<arenaTeamID><Type> TEAM_ID </Type></arenaTeamID>
+			<teamName><Type> UNICODE_STRING </Type></teamName>
+		</Properties>
+		<implementedBy> CommonDefs.TeamSettings.converter </implementedBy>
+	</TEAM_SETTINGS>
+
 	<BATTLE_DEF>
 		FIXED_DICT
 		<Properties>
@@ -151,6 +209,9 @@
 			<operationID><Type>GAMEPARAMS_ID</Type></operationID>
 			<battleItemTreeGpId><Type>INT64</Type></battleItemTreeGpId>		<!-- place in which we can use GAMEPARAMS_ID or EMPTY_BATTLE_ITEM_TREE (-1) -->
 			<isFogOfWar><Type>BOOL</Type></isFogOfWar>
+			<isViewShipInfoDisabled><Type>BOOL</Type></isViewShipInfoDisabled>
+			<isTournamentBattle><Type>BOOL</Type></isTournamentBattle>
+			<teamsSettings><Type> ARRAY <of> TEAM_SETTINGS </of> </Type></teamsSettings>
 		</Properties>
 		<implementedBy>BattleDef.converter</implementedBy>
 	</BATTLE_DEF>
@@ -198,13 +259,15 @@
 		</Properties>
 	</RANK_BATTLES_DENY_REASON>
 
-
 	<CREW_MODIFIERS_COMPACT_PARAMS>
 		FIXED_DICT
 		<Properties>
 			<paramsId><Type>UINT32</Type></paramsId>
 			<isInAdaptation><Type>BOOL</Type></isInAdaptation>
-            <learnedSkills><Type>ARRAY<of>ARRAY<of>UINT8</of></of></Type></learnedSkills>
+			<learnedSkills><Type>ARRAY<of>ARRAY<of>UINT8</of></of></Type></learnedSkills>
+			<unlockedEpicSkillsData><Type>MSGPACK_BLOB</Type></unlockedEpicSkillsData>
+			<unlockedUniqueSkillId><Type>STRING</Type></unlockedUniqueSkillId>
+			<vanities><Type>MSGPACK_BLOB</Type></vanities>
 		</Properties>
 		<implementedBy>CrewModifiers.crewModifiersCompactParamsConverter</implementedBy>
 	</CREW_MODIFIERS_COMPACT_PARAMS>
@@ -249,10 +312,14 @@
 		ARRAY <of> PLAYER_DEF </of>
 	</PLAYERS_DEFS>
 
-	<!-- Alias is used by matchmaker to send pack of players divided on teams to battle session -->
-	<TEAMSLIST>
-		ARRAY <of> PLAYERS_DEFS </of>
-	</TEAMSLIST>
+	<BATTLE_SESSION_TEAM_INFO>
+		FIXED_DICT
+		<Properties>
+			<teamID><Type> TEAM_ID </Type></teamID>
+			<playersDefs><Type> PLAYERS_DEFS </Type></playersDefs>
+		</Properties>
+		<implementedBy> ServerCommonDefs.BattleSessionTeamInfo.battleSessionTeamInfoConverter </implementedBy>
+	</BATTLE_SESSION_TEAM_INFO>
 
 	<PRE_BATTLE_CREATOR_DEF>
 		FIXED_DICT
@@ -1036,8 +1103,6 @@
 			<yaw><Type>FLOAT</Type></yaw>
 			<scale><Type>FLOAT</Type></scale>
 			<actionName><Type>STRING</Type></actionName>
-			<matterName><Type>STRING</Type></matterName>
-			<tintName><Type>STRING</Type></tintName>
 		</Properties>
 		<AllowNone>true</AllowNone>
 	</MODEL_STATE>
@@ -1453,48 +1518,121 @@
 		<AllowNone> true </AllowNone>
 	</SHIP_RESTRICTIONS>
 
+	<CHAT_MESSAGE_HISTORY_DEF>
+		FIXED_DICT
+		<Properties>
+			<senderDBID><Type> DB_ID </Type></senderDBID>
+			<senderName><Type> STRING </Type></senderName>
+			<clanID><Type> DB_ID </Type></clanID>
+			<clanTag><Type> UNICODE_STRING </Type></clanTag>
+			<message><Type> STRING </Type></message>
+			<messageCreationTime><Type> UINT32 </Type></messageCreationTime>
+		</Properties>
+		<implementedBy> CommonDefs.ChatMessageHistoryDef.converter </implementedBy>
+	</CHAT_MESSAGE_HISTORY_DEF>
+
 	<TRAINING_ROOM_PROPERTIES>
 		FIXED_DICT
-		<implementedBy>TrainingRoomDataTypes.trainingRoomPropertiesConverter</implementedBy>
 		<Properties>
-			<mapId><Type>INT32</Type></mapId>
-			<scenario><Type>UNICODE_STRING</Type></scenario>
-			<teamSize><Type>INT32</Type></teamSize>
-			<weatherId><Type>INT32</Type></weatherId>
-			<duration><Type>INT32</Type></duration>
-			<commandersManagement><Type>BOOL</Type></commandersManagement>
-			<isClosed><Type>BOOL</Type></isClosed>
-			<description><Type>UNICODE_STRING</Type></description>
-			<shipRestrictions><Type>SHIP_RESTRICTIONS</Type></shipRestrictions>
-			<hideShips><Type>BOOL</Type></hideShips>
-			<passwordAction><Type>INT8</Type></passwordAction>
-			<password><Type>UNICODE_STRING</Type></password>
-			<observersAvailable><Type>BOOL</Type></observersAvailable>
+			<mapId><Type> INT32 </Type></mapId>
+			<scenario><Type> UNICODE_STRING </Type></scenario>
+			<teamSize><Type> INT32 </Type></teamSize>
+			<weatherId><Type> INT32 </Type></weatherId>
+			<duration><Type> INT32 </Type></duration>
+			<commandersManagement><Type> BOOL </Type></commandersManagement>
+			<isClosed><Type> BOOL </Type></isClosed>
+			<description><Type> UNICODE_STRING </Type></description>
+			<shipRestrictions><Type> SHIP_RESTRICTIONS </Type></shipRestrictions>
+			<hideShips><Type> BOOL </Type></hideShips>
+			<teamsSettings><Type> ARRAY <of> TEAM_SETTINGS </of> </Type></teamsSettings>
+			<isFogOfWar><Type> BOOL </Type></isFogOfWar>
+			<isViewShipInfoDisabled><Type> BOOL </Type></isViewShipInfoDisabled>
+			<password><Type> UNICODE_STRING </Type></password>
+			<observersAvailable><Type> BOOL </Type></observersAvailable>
+			<isTournamentBattle><Type> BOOL </Type></isTournamentBattle>
 		</Properties>
+		<implementedBy> TrainingRoomCommonUtils.TrainingRoomProperties.converter </implementedBy>
 	</TRAINING_ROOM_PROPERTIES>
+
+	<TRAINING_ROOM_COUNTDOWN_INFO>
+		FIXED_DICT
+		<Properties>
+			<countdownStage><Type> STATE </Type></countdownStage>
+			<endCountdownTime><Type> UINT32 </Type></endCountdownTime>
+		</Properties>
+		<implementedBy> TrainingRoomCommonUtils.CommonTrainingRoomDefs.countdownInfoConverter </implementedBy>
+	</TRAINING_ROOM_COUNTDOWN_INFO>
 
 	<TRAINING_ROOM_DEF>
 		FIXED_DICT
-		<implementedBy>TrainingRoomDef.converter</implementedBy>
 		<Properties>
-			<commandersManagement><Type>BOOL</Type></commandersManagement>
-			<shipRestrictions><Type>SHIP_RESTRICTIONS</Type></shipRestrictions>
-			<hideShips><Type>BOOL</Type></hideShips>
-			<scenario><Type>UNICODE_STRING</Type></scenario>
-			<teamSize><Type>INT32</Type></teamSize>
-			<preBattleDef><Type>PRE_BATTLE_DEF</Type></preBattleDef>
-			<distributedPlayersCount><Type>INT32</Type></distributedPlayersCount>
-			<notDistributedPlayersCount><Type>INT32</Type></notDistributedPlayersCount>
-			<passwordLen><Type>INT32</Type></passwordLen>
-			<hasFriends><Type>BOOL</Type></hasFriends>
-			<observersAvailable><Type>BOOL</Type></observersAvailable>
+			<commandersManagement><Type> BOOL </Type></commandersManagement>
+			<shipRestrictions><Type> SHIP_RESTRICTIONS </Type></shipRestrictions>
+			<hideShips><Type> BOOL </Type></hideShips>
+			<scenario><Type> UNICODE_STRING </Type></scenario>
+			<teamSize><Type> INT32 </Type></teamSize>
+			<preBattleDef><Type> PRE_BATTLE_DEF </Type></preBattleDef>
+			<isBattleTeamsSpawnSwapped><Type> BOOL </Type></isBattleTeamsSpawnSwapped>
+			<distributedPlayersCount><Type> INT32 </Type></distributedPlayersCount>
+			<notDistributedPlayersCount><Type> INT32 </Type></notDistributedPlayersCount>
+			<passwordLen><Type> INT32 </Type></passwordLen>
+			<hasFriends><Type> BOOL </Type></hasFriends>
+			<observersAvailable><Type> BOOL </Type></observersAvailable>
+			<countdownInfo><Type> TRAINING_ROOM_COUNTDOWN_INFO </Type></countdownInfo>
 		</Properties>
-		<AllowNone>true</AllowNone>
+		<implementedBy> TrainingRoomCommonUtils.TrainingRoomDef.converter </implementedBy>
+		<AllowNone> true </AllowNone>
 	</TRAINING_ROOM_DEF>
 
-	<COUNTDOWN_INFO>
-		TUPLE<of>INT32</of><size>2</size>
-	</COUNTDOWN_INFO>
+	<TRAINING_ROOM_BOT_CONFIG_DEF>
+		FIXED_DICT
+		<Properties>
+			<aiLevel><Type> INT8 </Type></aiLevel>
+			<canMove><Type> BOOL </Type></canMove>
+			<canShoot><Type> BOOL </Type></canShoot>
+		</Properties>
+		<implementedBy> TrainingRoomCommonUtils.TrainingRoomBotConfigDef.converter </implementedBy>
+		<AllowNone> true </AllowNone>
+	</TRAINING_ROOM_BOT_CONFIG_DEF>
+
+	<TRAINING_ROOM_USER_DEF>
+		FIXED_DICT
+		<Properties>
+			<id><Type> PLAYER_ID </Type></id>
+			<dbid><Type> DB_ID </Type></dbid>
+			<name><Type> STRING </Type></name>
+			<shipId><Type> SHIP_ID </Type></shipId>
+			<teamId><Type> TEAM_ID </Type></teamId>
+			<state><Type> STATE </Type></state>
+			<isConnected><Type> BOOL </Type></isConnected>
+			<level><Type> UINT8 </Type></level>
+			<realm><Type> STRING </Type></realm>
+			<expirationTime><Type> UINT64 </Type></expirationTime>
+			<rankInfo><Type> UINT32 </Type></rankInfo>
+			<rankInfoActive><Type> UINT32 </Type></rankInfoActive>
+			<rankDenyReason><Type> UINT32 </Type></rankDenyReason>
+			<isAbuser><Type> BOOL </Type></isAbuser>
+			<refusedQueueTypes><Type> QUEUE_TYPE </Type></refusedQueueTypes>
+			<isMercenary><Type> BOOL </Type></isMercenary>
+			<role><Type> UINT8 </Type></role>
+			<dogTag><Type> ARRAY <of> GAMEPARAMS_ID </of></Type></dogTag>
+			<clanInfo><Type> PLAYER_CLAN_INFO </Type></clanInfo>
+			<botConfig><Type> TRAINING_ROOM_BOT_CONFIG_DEF </Type></botConfig>
+		</Properties>
+		<implementedBy> TrainingRoomCommonUtils.TrainingRoomUserDef.converter </implementedBy>
+	</TRAINING_ROOM_USER_DEF>
+
+	<TRAINING_ROOM_UPDATED_DATA>
+		FIXED_DICT
+		<Properties>
+			<trainingRoomDef><Type> TRAINING_ROOM_DEF </Type></trainingRoomDef>
+			<playersDefs><Type> ARRAY <of> TRAINING_ROOM_USER_DEF </of> </Type></playersDefs>
+			<removedPlayersIDs><Type> ARRAY <of> PLAYER_ID </of> </Type></removedPlayersIDs>
+			<inviteesDefs><Type> ARRAY <of> TRAINING_ROOM_USER_DEF </of> </Type></inviteesDefs>
+			<removedInviteesIDs><Type> ARRAY <of> PLAYER_ID </of> </Type></removedInviteesIDs>
+		</Properties>
+		<implementedBy> TrainingRoomCommonUtils.CommonTrainingRoomDefs.updatedDataConverter </implementedBy>
+	</TRAINING_ROOM_UPDATED_DATA>
 
 	<VCL_SHOTS_ENTITY_STATS>
 		FIXED_DICT
@@ -1665,18 +1803,6 @@
 			<projectiles><Type>ARRAY<of>PLANE_ROCKET</of></Type></projectiles>
 		</Properties>
 	</PLANE_ROCKET_PACK>
-
-	<MSGPACK_BLOB>
-		USER_TYPE
-		<Type>BLOB</Type>
-		<implementedBy>MsgPackCustomConverter.converter</implementedBy>
-	</MSGPACK_BLOB>
-
-	<PICKLED_BLOB>
-		USER_TYPE
-		<Type>BLOB</Type>
-		<implementedBy>PickledBlobConverter.converter</implementedBy>
-	</PICKLED_BLOB>
 
 	<PLAYER_DIGEST>
 		FIXED_DICT
@@ -2037,9 +2163,8 @@
 	<CREATE_TRAINING_ROOM_PARAMS>
 		FIXED_DICT
 		<Properties>
-			<trainingRoomDef> <Type>TRAINING_ROOM_DEF</Type> </trainingRoomDef>
-			<ownerDef> <Type>PLAYER_DEF</Type> </ownerDef>
-			<password> <Type>UNICODE_STRING</Type> </password>
+			<trainingRoomDef> <Type> TRAINING_ROOM_DEF </Type> </trainingRoomDef>
+			<password> <Type> UNICODE_STRING </Type> </password>
 		</Properties>
 	</CREATE_TRAINING_ROOM_PARAMS>
 

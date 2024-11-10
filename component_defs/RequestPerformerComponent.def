@@ -20,4 +20,8 @@
 	<ofService>
 	    <UsersInfoActualizer/>
 	</ofService>
+	
+	<ofBWComponent>
+		<service/>
+	</ofBWComponent>
 </root>

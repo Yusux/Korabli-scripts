@@ -54,8 +54,11 @@
             <Arg>UINT32</Arg>
         </kill>
         <shootGuns>
-            <Arg>UINT16</Arg>
+            <Arg>GUN_BITS</Arg>
         </shootGuns>
+        <shootChargeableDrumGuns>
+            <Arg>CHARGEABLE_DRUM_GUN_BITS</Arg>
+        </shootChargeableDrumGuns>
         <syncArtilleryGun>
             <Arg>INT32</Arg>
             <Arg>FLOAT32</Arg>

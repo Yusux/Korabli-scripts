@@ -32,6 +32,12 @@
             <Default> 0.0 </Default>
         </cameraYaw>
 
+        <countdownSpeed>
+            <Type> UINT16 </Type>
+            <Editable> true </Editable>
+            <Default> 0 </Default>
+        </countdownSpeed>
+
         <shipLevels>
             <Type>ARRAY <of>UINT8</of></Type>
             <Editable>True</Editable>

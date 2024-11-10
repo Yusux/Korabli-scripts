@@ -10,4 +10,10 @@
 	<ofEntity>
 		<Account/>
 	</ofEntity>
+	
+	<ofBWComponent>
+		<base/>
+		<client/>
+		<bot/>
+	</ofBWComponent>
 </root>

@@ -34,5 +34,12 @@
     <ofService>
         <UsersRequesterTester/>
     </ofService>
+	
+	<ofBWComponent>
+		<base/>
+		<bot/>
+		<client/>
+		<service/>
+	</ofBWComponent>
 </root>
 

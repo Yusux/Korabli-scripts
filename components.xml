@@ -16,6 +16,7 @@
 	<GiftListsComponent/>
 	<RequestPerformerComponent/>
 	<BattlePassComponent/>
+	<SessionStatsTransferComponent/>
 	<SurveysComponent/>
 	<NewbieQuestComponent/>
 	<KeyTargetComponent/>
@@ -32,4 +33,10 @@
 	<StrategicActionsComponent/>
 	<DevFlagsComponent/>
 	<ShipShardsComponent/>
+	<AccountDevComponent/>
+	<DivisionDevComponent/>
+	<AvatarDevComponent/>
+	<AccountClanComponent/>
+	<AvatarClanComponent/>
+	<TrainingRoomDevComponent/>
 </root>

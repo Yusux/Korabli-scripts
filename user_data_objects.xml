@@ -11,10 +11,12 @@
 	<MapSeparator/>
 	<InteractiveRadio/>
 	<InteractiveObject/>
+	<TriggeredObject/>
 	<SpaceDebugTool/>
 	<SpatialUIDebugTool/>
 	<SquadronReticleTool/>
 	<SpawnPoint/>
+	<TrailDebugTool/>
 	<Trigger/>
 	<WayPoint/>
 </root>

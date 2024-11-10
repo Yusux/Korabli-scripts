@@ -25,4 +25,11 @@
 		<Avatar/>
 		<Login/>
 	</ofEntity>
+	
+	<ofBWComponent>
+		<base/>
+		<bot/>
+		<client/>
+		<cell/>
+	</ofBWComponent>
 </root>

@@ -24,15 +24,6 @@
 				<result>BOOL</result>
 			</ReturnValues>
 		</claimAllRewards>
-		<dev_addPoints>
-			<Exposed/>
-			<Args>
-				<points> UINT16 </points>
-			</Args>
-		</dev_addPoints>
-		<dev_changeTask>
-			<Exposed/>
-		</dev_changeTask>
 	</BaseMethods>
 
 	<ClientMethods>
@@ -56,5 +47,11 @@
 	<ofEntity>
 		<Account/>
 	</ofEntity>
+	
+	<ofBWComponent>
+		<base/>
+		<bot/>
+		<client/>
+	</ofBWComponent>
 </root>
 
