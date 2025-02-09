@@ -206,7 +206,7 @@
         <setTrace>
             <Arg>BOOL</Arg>
         </setTrace>
-        <curVersion_13_10_0_8793441></curVersion_13_10_0_8793441>
+        <curVersion_25_1_0_8798761></curVersion_25_1_0_8798761>
         <updateSSEProgress>
             <Arg>STRING</Arg>
             <VariableLengthHeaderSize>
@@ -367,18 +367,24 @@
             <Arg>BOOL</Arg>
             <Arg>UINT8</Arg>
         </onSuperShipFeatureStateChanged>
-        <receiveDeficitList>
+        <receiveDeficitAndReplaceLists>
             <Args>
-                <gameParamsIds>ARRAY
+                <deficitGameParamsIds>ARRAY
                     <of>GAMEPARAMS_ID</of>
-                </gameParamsIds>
+                </deficitGameParamsIds>
+                <replaceGameParamsIds>ARRAY
+                    <of>GAMEPARAMS_ID</of>
+                </replaceGameParamsIds>
             </Args>
-        </receiveDeficitList>
+        </receiveDeficitAndReplaceLists>
         <onLeaveBattleTransactionsCompleted>
             <Args>
                 <deficitList>ARRAY
                     <of>GAMEPARAMS_ID</of>
                 </deficitList>
+                <replaceList>ARRAY
+                    <of>GAMEPARAMS_ID</of>
+                </replaceList>
             </Args>
         </onLeaveBattleTransactionsCompleted>
         <onDockDeferredCallsFlushed></onDockDeferredCallsFlushed>

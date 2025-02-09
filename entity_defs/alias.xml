@@ -15,6 +15,7 @@
 	<DB_ID>	INT64	</DB_ID>
 	<MAP_ID> UINT8 </MAP_ID>
 	<ENTITY_ID>INT32</ENTITY_ID>
+	<LOOSING_PARTICIPANTS>ARRAY<of>ENTITY_ID</of></LOOSING_PARTICIPANTS>
 	<WEAPON_TYPE>UINT8</WEAPON_TYPE>
 	<GUN_ID>UINT8</GUN_ID>
 	<GUN_BITS>UINT64</GUN_BITS>
@@ -848,7 +849,8 @@
 			<ownerType><Type>UINT8</Type></ownerType>
 			<ownerId><Type>ENTITY_ID</Type></ownerId>
 			<ownerTeam><Type>TEAM_ID</Type></ownerTeam>
-			<linkedTaskName><Type>STRING</Type></linkedTaskName>
+			<timeToLive><Type>UINT16</Type></timeToLive>
+			<endTime><Type>UINT16</Type></endTime>
 		</Properties>
 		<implementedBy>AttentionMarkerDef.converter</implementedBy>
 	</ATTENTION_MARKER_STATE>
@@ -1076,7 +1078,7 @@
 	<PARTICIPANT_SCORE_IN_ROUND>
 		FIXED_DICT
 		<Properties>
-			<avatarId><Type>ENTITY_ID</Type></avatarId>
+			<participantId><Type>ENTITY_ID</Type></participantId>
 			<place><Type>UINT8</Type></place>
 			<score><Type>UINT32</Type></score>
 		</Properties>
@@ -1087,12 +1089,39 @@
 		FIXED_DICT
 		<Properties>
 			<staticRoundParams><Type>UINT32</Type></staticRoundParams>
-			<currentRoundInfo><Type>UINT8</Type></currentRoundInfo>
+			<currentRoundInfo><Type>UINT16</Type></currentRoundInfo>
 			<participantsScoreInfo><Type>ARRAY<of>PARTICIPANT_SCORE_IN_ROUND</of></Type></participantsScoreInfo>
-			<loosingParticipants><Type>ARRAY<of>ENTITY_ID</of></Type></loosingParticipants>
+			<loosingParticipants><Type>ARRAY<of>LOOSING_PARTICIPANTS</of></Type></loosingParticipants>
 		</Properties>
 		<AllowNone>true</AllowNone>
 	</ROUND_STATE>
+
+	<TRIALS_PARAMS>
+		FIXED_DICT
+		<Properties>
+			<roundParams><Type>UINT32</Type></roundParams>
+			<targetScores><Type>ARRAY<of>UINT32</of></Type></targetScores>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</TRIALS_PARAMS>
+	
+	<TRIALS_ROUND>
+		FIXED_DICT
+		<Properties>
+			<indexAndStage><Type>UINT8</Type></indexAndStage>
+			<score><Type>UINT32</Type></score>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</TRIALS_ROUND>
+	
+	<TRIALS_STATE>
+		FIXED_DICT
+		<Properties>
+			<trialsParams><Type>TRIALS_PARAMS</Type></trialsParams>
+			<trialsRound><Type>TRIALS_ROUND</Type></trialsRound>
+		</Properties>
+		<AllowNone>true</AllowNone>
+	</TRIALS_STATE>
 
 	<MODEL_STATE>
 		FIXED_DICT
@@ -1365,6 +1394,7 @@
 			<uiInfo><Type>UI_INFO_STATE</Type></uiInfo>
 			<physics><Type>PHYSICS_STATE</Type></physics>
 			<battleRounds><Type>ROUND_STATE</Type></battleRounds>
+			<trials><Type>TRIALS_STATE</Type></trials>
 			<models><Type>ARRAY<of>MODEL_STATE</of></Type></models>
 		</Properties>
 	</BATTLE_LOGIC_STATE>

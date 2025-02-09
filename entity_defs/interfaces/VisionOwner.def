@@ -1,10 +1,9 @@
 <root>
 	<Properties>
-		<insideAviaVisionRadiusOwners>
-			<Type>  ARRAY <of> ENTITY_ID </of>   </Type>
-			<Flags>			ALL_CLIENTS 	    </Flags>
-			<SendLatestOnly> true </SendLatestOnly>
-		</insideAviaVisionRadiusOwners>
+		<isHidden>
+			<Type>		UINT8		</Type>
+			<Flags>		CELL_PUBLIC		</Flags>
+		</isHidden>
 	</Properties>
 	
 	<TempProperties>
@@ -38,7 +37,6 @@
 		<_entitiesBlockedFromVision/>
 		<_blockersFromEnemyVision/>
 		<_effectiveBlockersHistory/>
-		<_insideAviaZoneStateChangedTime/>
 	</TempProperties>
 	
 	<CellMethods>

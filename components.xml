@@ -39,4 +39,5 @@
 	<AccountClanComponent/>
 	<AvatarClanComponent/>
 	<TrainingRoomDevComponent/>
+	<VehicleDevComponent/>
 </root>

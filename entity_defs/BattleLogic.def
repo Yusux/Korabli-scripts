@@ -60,11 +60,6 @@
             <Type>VECTOR3</Type>
             <Flags>ALL_CLIENTS</Flags>
         </playerShipFoamEmission>
-        <useAviaZoneVision>
-            <Type>BOOL</Type>
-            <Flags>ALL_CLIENTS</Flags>
-            <Default>False</Default>
-        </useAviaZoneVision>
     </Properties>
     <ClientMethods>
         <onPlayWorldEffect>

@@ -497,46 +497,6 @@
         <onAvatarReady>
             <Exposed></Exposed>
         </onAvatarReady>
-        <suicide>
-            <Exposed></Exposed>
-        </suicide>
-        <dev_teleportShip>
-            <Exposed></Exposed>
-            <Arg>VECTOR3</Arg>
-            <Arg>NULLABLE_FLOAT</Arg>
-        </dev_teleportShip>
-        <dev_teleportToEntity>
-            <Exposed></Exposed>
-            <Args>
-                <entityId>ENTITY_ID</entityId>
-            </Args>
-        </dev_teleportToEntity>
-        <dev_teleportToClosestAlly>
-            <Exposed></Exposed>
-        </dev_teleportToClosestAlly>
-        <dev_setVehicleHealth>
-            <Exposed></Exposed>
-            <Arg>INT32</Arg>
-        </dev_setVehicleHealth>
-        <dev_flight>
-            <Exposed></Exposed>
-            <Flags>OWN_CLIENT</Flags>
-        </dev_flight>
-        <dev_updatePhysics>
-            <Exposed></Exposed>
-            <Args>
-                <needRecreate>BOOL</needRecreate>
-                <timeScale>NULLABLE_FLOAT</timeScale>
-                <replacedParams>PICKLED_BLOB</replacedParams>
-            </Args>
-        </dev_updatePhysics>
-        <dev_damageArmorSegment>
-            <Exposed></Exposed>
-            <Args>
-                <segmentIndex>UINT8</segmentIndex>
-                <thicknessDamage>FLOAT</thicknessDamage>
-            </Args>
-        </dev_damageArmorSegment>
         <send_commonCMD>
             <Exposed>OWN_CLIENT</Exposed>
             <Args>

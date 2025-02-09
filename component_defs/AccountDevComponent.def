@@ -149,15 +149,7 @@
 			</Args>
 		</vseUpdateTaskProgress>
 
-		<vseSetAutoProgress>
-			<!-- set auto add players points active. -->
-			<Arg> BOOL </Arg>
-			<Exposed/>
-		</vseSetAutoProgress>
-
 		<vseChangeStagePoints>
-			<!-- teams stage points -->
-			<Arg> UINT32 </Arg>
 			<!-- personal stage points  -->
 			<Arg> UINT32 </Arg>
 			 <Exposed/>

@@ -380,6 +380,7 @@
             <Arg>FLOAT</Arg>
             <Arg>TEAM_ID</Arg>
             <Arg>UINT64</Arg>
+            <Arg>BOOL</Arg>
         </receive_wardAdded>
         <receive_wardRemoved>
             <Arg>PLANE_ID</Arg>
@@ -930,14 +931,6 @@
                 <clientCanShoot>BOOL</clientCanShoot>
             </Args>
         </shootWeapon>
-        <shootFromArbitraryPos>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Args>
-                <weaponType>WEAPON_TYPE</weaponType>
-                <clientTargetPos>VECTOR3</clientTargetPos>
-                <startPos>VECTOR3</startPos>
-            </Args>
-        </shootFromArbitraryPos>
         <stopShooting>
             <Exposed>OWN_CLIENT</Exposed>
         </stopShooting>
