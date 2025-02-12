@@ -6,12 +6,6 @@
 			</Args>
 			<Exposed/>
 		</gotSprintSummaryShown>
-		<gotSeasonSummaryShown>
-			<Args>
-				<seasonId> INT16 </seasonId>
-			</Args>
-			<Exposed/>
-		</gotSeasonSummaryShown>
 		<requestRankedDossier>
 			<Args>
 				<seasonId> INT16 </seasonId>

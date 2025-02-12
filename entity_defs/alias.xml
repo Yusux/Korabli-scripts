@@ -1109,7 +1109,7 @@
 		FIXED_DICT
 		<Properties>
 			<indexAndStage><Type>UINT8</Type></indexAndStage>
-			<score><Type>UINT32</Type></score>
+			<score><Type>FLOAT</Type></score>
 		</Properties>
 		<AllowNone>true</AllowNone>
 	</TRIALS_ROUND>
@@ -1560,6 +1560,17 @@
 		</Properties>
 		<implementedBy> CommonDefs.ChatMessageHistoryDef.converter </implementedBy>
 	</CHAT_MESSAGE_HISTORY_DEF>
+
+	<CHAT_RESTRICTIONS_DEF>
+		FIXED_DICT
+		<Properties>
+			<xmppChatBlocked><Type> BOOL </Type></xmppChatBlocked>
+			<battleChatBlocked><Type> BOOL </Type></battleChatBlocked>
+			<preBattleChatBlocked><Type> BOOL </Type></preBattleChatBlocked>
+			<descriptionFieldsBlocked><Type> BOOL </Type></descriptionFieldsBlocked>
+		</Properties>
+		<implementedBy> CommonDefs.ChatRestrictionsDef.converter </implementedBy>
+	</CHAT_RESTRICTIONS_DEF>
 
 	<TRAINING_ROOM_PROPERTIES>
 		FIXED_DICT

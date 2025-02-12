@@ -102,7 +102,6 @@
 
 		<resetRankedSeason>
 			<Args>
-				<seasonId> INT16 </seasonId>
 			</Args>
 			<Exposed/>
 		</resetRankedSeason>
@@ -128,6 +127,18 @@
 			<Exposed/>
 		</setFakeBattlesResults>
 
+		<skipRankedLeague>
+			<Args>
+			</Args>
+			<Exposed/>
+		</skipRankedLeague>
+
+		<resetRankedLeague>
+			<Args>
+			</Args>
+			<Exposed/>
+		</resetRankedLeague>
+		
 		<resetAchievements>
 			<Exposed/>
 		</resetAchievements>
@@ -211,6 +222,28 @@
 			</Args>
 		</changeBattlePassType>
 
+		<setMasteryRank>
+			<Exposed/>
+			<Args>
+				<shipID> SHIP_ID </shipID>
+				<masteryRank> UINT8 </masteryRank>
+			</Args>
+		</setMasteryRank>
+
+		<addMasteryPoints>
+			<Exposed/>
+			<Args>
+				<shipID> SHIP_ID </shipID>
+				<masteryPointsToAdd> UINT64 </masteryPointsToAdd>
+			</Args>
+		</addMasteryPoints>
+
+		<doMasteryTasks>
+			<Exposed/>
+			<Args>
+				<shipID> SHIP_ID </shipID>
+			</Args>
+		</doMasteryTasks>
 	</BaseMethods>
 
 	<ofEntity>

@@ -1,0 +1,30 @@
+<root>
+	<BaseMethods>
+	</BaseMethods>
+
+	<ClientMethods>
+		<startSyncDelay/>
+		<receiveMasteryRankVisibilityInBattle>
+			<Args>
+				<value> BOOL </value>
+			</Args>
+		</receiveMasteryRankVisibilityInBattle>
+		<receiveShipMasteryUpdate>
+			<Args>
+				<shipID> SHIP_ID </shipID>
+				<masteryData> PYTHON </masteryData>
+				<tasksData> PYTHON </tasksData>
+			</Args>
+		</receiveShipMasteryUpdate>
+	</ClientMethods>
+
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+
+	<ofBWComponent>
+		<base/>
+		<bot/>
+		<client/>
+	</ofBWComponent>
+</root>

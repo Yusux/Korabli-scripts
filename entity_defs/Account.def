@@ -19,7 +19,7 @@
         </isClientOnline>
     </Properties>
     <ClientMethods>
-        <onAccountReallyCreated></onAccountReallyCreated>
+        <checkAccountCreated></checkAccountCreated>
         <onGetBuyList>
             <Arg>BLOB</Arg>
         </onGetBuyList>
@@ -206,7 +206,7 @@
         <setTrace>
             <Arg>BOOL</Arg>
         </setTrace>
-        <curVersion_25_1_0_8798761></curVersion_25_1_0_8798761>
+        <curVersion_25_2_1_8801689></curVersion_25_2_1_8801689>
         <updateSSEProgress>
             <Arg>STRING</Arg>
             <VariableLengthHeaderSize>

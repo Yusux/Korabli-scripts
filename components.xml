@@ -40,4 +40,5 @@
 	<AvatarClanComponent/>
 	<TrainingRoomDevComponent/>
 	<VehicleDevComponent/>
+	<ShipsMasteryComponent/>
 </root>
