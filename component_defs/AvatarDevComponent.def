@@ -29,6 +29,26 @@
 			</Args>
 		</changeDynamicDivisionOwnerToBot>
 
+		<reloadShipAndCrewParams>
+			<Args>
+				<shipParamsId> SHIP_ID </shipParamsId>
+				<crewParamsId> CREW_ID </crewParamsId>
+			</Args>
+		</reloadShipAndCrewParams>
+
+		<receiveDrawServerMines>
+			<Args>
+				<fieldID>FIELD_ID</fieldID>
+				<serverMinesInfo>ARRAY<of>MINE_INFO</of></serverMinesInfo>
+			</Args>
+		</receiveDrawServerMines>
+
+		<receiveSpawnedBotId>
+			<Args>
+				<vehicleId> ENTITY_ID </vehicleId>
+			</Args>
+		</receiveSpawnedBotId>
+
 	</ClientMethods>
 
 	<CellMethods>
@@ -143,6 +163,14 @@
 			</Args>
 		</shootFromArbitraryPos>
 
+		<updateWishCategories>
+			<Exposed> OWN_CLIENT </Exposed>
+			<Args>
+				<entityId> ENTITY_ID </entityId>
+				<disabledWishCategories> ARRAY <of> AI_CATEGORY </of> </disabledWishCategories>
+			</Args>
+		</updateWishCategories>
+
 	</CellMethods>
 
 	<BaseMethods>
@@ -157,13 +185,12 @@
 			<Args>
 				<shipName> STRING </shipName>
 				<teamId> TEAM_ID </teamId>
-				<x> INT16 </x>
-				<z> INT16 </z>
-				<yaw> INT16 </yaw>
-				<aiConfig> UINT16 </aiConfig>
+				<position> VECTOR3 </position>
+				<yaw> FLOAT </yaw>
 				<botName> STRING </botName>
 				<botRoles> ARRAY <of> STRING </of> </botRoles>
-				</Args>
+				<aiParams> AI_PARAMS </aiParams>
+			</Args>
 			<Exposed> OWN_CLIENT </Exposed>
 		</spawnBot>
 

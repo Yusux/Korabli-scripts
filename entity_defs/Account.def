@@ -154,15 +154,6 @@
             <Arg>UINT8</Arg>
             <Arg>BLOB</Arg>
         </leaveBattleSession>
-        <onChatMessageRegular>
-            <Args>
-                <senderDBID>DB_ID</senderDBID>
-                <senderName>STRING</senderName>
-                <channelId>STRING</channelId>
-                <message>STRING</message>
-                <messageCreationTime>UINT32</messageCreationTime>
-            </Args>
-        </onChatMessageRegular>
         <onChatMessageBanChat>
             <Args>
                 <channelId>STRING</channelId>
@@ -206,7 +197,7 @@
         <setTrace>
             <Arg>BOOL</Arg>
         </setTrace>
-        <curVersion_25_2_1_8801689></curVersion_25_2_1_8801689>
+        <curVersion_25_5_0_8809839></curVersion_25_5_0_8809839>
         <updateSSEProgress>
             <Arg>STRING</Arg>
             <VariableLengthHeaderSize>

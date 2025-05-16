@@ -102,6 +102,21 @@
 			</Args>
 		</syncPreBattleDef>
 
+		<receiveChatMessage>
+			<Args>
+				<divisionID> ENTITY_ID </divisionID>
+				<senderID> PLAYER_ID </senderID>
+				<message> STRING </message>
+				<messageCreationTime> TIMESTAMP </messageCreationTime>
+			</Args>
+		</receiveChatMessage>
+
+		<sendMessageToPlayers>
+			<Args>
+				<message> STRING </message>
+			</Args>
+			<Exposed/>
+		</sendMessageToPlayers>
 	</BaseMethods>
 
 	<ClientMethods>
@@ -110,6 +125,14 @@
 				<packedPreBattleDef>BLOB</packedPreBattleDef>
 			</Args>
 		</syncPreBattleDef>
+
+		<receiveChatMessage>
+			<Args>
+				<senderID> PLAYER_ID </senderID>
+				<message> STRING </message>
+				<messageCreationTime> TIMESTAMP </messageCreationTime>
+			</Args>
+		</receiveChatMessage>
 	</ClientMethods>
 
 	<ofEntity>

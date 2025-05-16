@@ -53,6 +53,16 @@
 
 		<blockedControls/>
 
+		<_batteryFixedStates/>
+		<_batterySpendingStates/>
+		<_withoutTeamVisionStates/>
+		<_blindStates/>
+		<_invisibleStates/>
+		<_zeroFloodProbabilityStates/>
+		<_zeroBurnProbabilityStates/>
+		<_outgoingPingsRemovalStates/>
+		<_incomingPingsRemovalStates/>
+
 	</TempProperties>
 
 	<CellMethods>

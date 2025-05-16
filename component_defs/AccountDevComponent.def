@@ -6,6 +6,13 @@
 			<Arg>STRING</Arg>
 		</logConsole>
 
+		<reloadShipAndCrewParams>
+			<Args>
+				<shipParamsId> SHIP_ID </shipParamsId>
+				<crewParamsId> CREW_ID </crewParamsId>
+			</Args>
+		</reloadShipAndCrewParams>
+
 	</ClientMethods>
 
 	<BaseMethods>
@@ -138,7 +145,7 @@
 			</Args>
 			<Exposed/>
 		</resetRankedLeague>
-		
+
 		<resetAchievements>
 			<Exposed/>
 		</resetAchievements>
@@ -244,6 +251,65 @@
 				<shipID> SHIP_ID </shipID>
 			</Args>
 		</doMasteryTasks>
+
+		<createTournamentRoom>
+			<Exposed/>
+			<Args>
+				<roomInitialData> TOURNAMENT_ROOM_INITIAL_DATA </roomInitialData>
+			</Args>
+		</createTournamentRoom>
+
+		<scheduleTournamentRoomDestroy>
+			<Exposed/>
+			<Args>
+				<roomWebID> DB_ID </roomWebID>
+				<destroyTimestamp> TIMESTAMP </destroyTimestamp>
+			</Args>
+		</scheduleTournamentRoomDestroy>
+
+		<startSessionInTournamentRoom>
+			<Exposed/>
+			<Args>
+				<roomWebID> DB_ID </roomWebID>
+				<sessionID> TOURNAMENT_ROOM_SESSION_ID </sessionID>
+			</Args>
+		</startSessionInTournamentRoom>
+
+		<updateSessionsInTournamentRoom>
+			<Exposed/>
+			<Args>
+				<roomWebID> DB_ID </roomWebID>
+				<sessionInfos> ARRAY <of> TOURNAMENT_ROOM_SESSION_INFO </of> </sessionInfos>
+			</Args>
+		</updateSessionsInTournamentRoom>
+
+		<cancelSessionInTournamentRoom>
+			<Exposed/>
+			<Args>
+				<roomWebID> DB_ID </roomWebID>
+				<sessionID> TOURNAMENT_ROOM_SESSION_ID </sessionID>
+			</Args>
+		</cancelSessionInTournamentRoom>
+
+		<reloadShipAndCrewParams>
+			<Exposed/>
+			<Args>
+				<shipParamsId> SHIP_ID </shipParamsId>
+				<crewParamsId> CREW_ID </crewParamsId>
+			</Args>
+		</reloadShipAndCrewParams>
+
+		<resetRatingBattlesSeasonProgress>
+			<Exposed/>
+		</resetRatingBattlesSeasonProgress>
+
+		<performFakeRatingBattle>
+			<Exposed/>
+			<Args>
+				<isWinner> BOOL </isWinner>
+			</Args>
+		</performFakeRatingBattle>
+
 	</BaseMethods>
 
 	<ofEntity>

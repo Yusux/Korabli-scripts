@@ -41,4 +41,8 @@
 	<TrainingRoomDevComponent/>
 	<VehicleDevComponent/>
 	<ShipsMasteryComponent/>
+	<TournamentRoomInviteeComponent/>
+	<TournamentRoomMemberComponent/>
+	<TournamentRoomsManagerDevComponent/>
+	<RatingBattlesComponent/>
 </root>

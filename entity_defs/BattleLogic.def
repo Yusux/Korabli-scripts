@@ -60,6 +60,10 @@
             <Type>VECTOR3</Type>
             <Flags>ALL_CLIENTS</Flags>
         </playerShipFoamEmission>
+        <eventLogicFlags>
+            <Type>EVENT_LOGIC_FLAGS</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </eventLogicFlags>
     </Properties>
     <ClientMethods>
         <onPlayWorldEffect>

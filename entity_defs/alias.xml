@@ -41,9 +41,20 @@
 	<RIBBON_ID>INT8</RIBBON_ID>
 	<STATE>UINT8</STATE>
 	<FIELD_ID>UINT16</FIELD_ID>
+	<MINE_ID>UINT16</MINE_ID>
 	<HIT_TYPE>UINT8</HIT_TYPE>
 	<BUOYANCY_STATE>UINT8</BUOYANCY_STATE>
 	<PREMADE_ID>UINT16</PREMADE_ID>
+	<AIR_SUPPORT_CHARGER_INDEX>UINT8</AIR_SUPPORT_CHARGER_INDEX>
+	<PING_HIT_SIDE>INT8</PING_HIT_SIDE>
+	<PING_HIT_COUNT>UINT8</PING_HIT_COUNT>
+	<OUTGOING_WAVE_ID>UINT8</OUTGOING_WAVE_ID>
+	<SUBMARINE_ACOUSTIC_SHOOTER_MODE>UINT8</SUBMARINE_ACOUSTIC_SHOOTER_MODE>
+	<SHADOW_REASON>UINT8</SHADOW_REASON>
+	<TIMESTAMP> UINT32 </TIMESTAMP>  <!-- it's about ~ 2100 year (if seconds goes from 1970) -->
+	<TOURNAMENT_ROOM_WEB_ID> INT32 </TOURNAMENT_ROOM_WEB_ID>
+	<TOURNAMENT_ROOM_SESSION_ID> INT8 </TOURNAMENT_ROOM_SESSION_ID>
+	<EVENT_LOGIC_FLAGS> UINT8 </EVENT_LOGIC_FLAGS>
 
 	<MSGPACK_BLOB>
 		USER_TYPE
@@ -138,6 +149,17 @@
 	<VISION>
 		ARRAY<of>ENTITY_ID</of>
 	</VISION>
+
+	<VEHICLE_SHADOW_INFO>
+		FIXED_DICT
+		<Properties>
+			<vehicleID><Type>	ENTITY_ID		</Type></vehicleID>
+			<position><Type>	VECTOR3			</Type></position>
+			<yaw><Type>			FLOAT			</Type></yaw>
+			<pitch><Type>		FLOAT			</Type></pitch>
+			<reasons><Type>		SHADOW_REASON	</Type></reasons>
+		</Properties>
+	</VEHICLE_SHADOW_INFO>
 	
 	<DB_ID_LIST>
 		ARRAY<of>DB_ID</of>
@@ -249,6 +271,7 @@
 			<comment><Type>STRING</Type></comment>
 			<clanInfo><Type>PLAYER_CLAN_INFO</Type></clanInfo>
 			<dogTag><Type>ARRAY<of>GAMEPARAMS_ID</of></Type></dogTag>
+			<ratingInfo><Type>UINT16</Type></ratingInfo>
 		</Properties>
 	</DIVISION_SEEKER_DEF>
 
@@ -286,6 +309,17 @@
 		<implementedBy>AIConfigDef.converter</implementedBy>
 		<AllowNone> true </AllowNone>
 	</AI_CONFIG>
+
+	<AI_PARAMS>
+		FIXED_DICT
+		<Properties>
+			<level><Type> INT8 </Type></level>
+			<disabledCategories><Type> ARRAY <of> AI_CATEGORY </of> </Type></disabledCategories>
+			<personalBehaviourIdx><Type> UINT8 </Type></personalBehaviourIdx>
+			<teamBehaviourIdx><Type> UINT8 </Type></teamBehaviourIdx>
+		</Properties>
+		<AllowNone> true </AllowNone>
+	</AI_PARAMS>
 
 	<PLAYER_DEF>
 		FIXED_DICT
@@ -505,7 +539,7 @@
 			<pos>			<Type>VECTOR3</Type>	</pos>
 			<dir>			<Type>VECTOR3</Type>	</dir>
 			<shotID>		<Type>SHOT_ID</Type>	</shotID>
-			<armed>			<Type>BOOL</Type>		</armed>
+			<isArmed>		<Type>BOOL</Type>		</isArmed>
 			<maneuverDump>	<Type>TORPEDO_MANEUVER_DUMP  </Type>	</maneuverDump>
 			<acousticDump>	<Type>TORPEDO_ACOUSTIC_DUMP  </Type>    </acousticDump>
 		</Properties>
@@ -525,23 +559,31 @@
 	<DEPTH_CHARGE>
 		FIXED_DICT
 		<Properties>
-			<pos>				<Type>	VECTOR3	</Type> </pos>
-			<dir>				<Type>	VECTOR3	</Type>	</dir>
-			<shotID>			<Type>	SHOT_ID	</Type>	</shotID>
-			<serverTimeLeft>	<Type>	FLOAT	</Type>	</serverTimeLeft>
-			<splashRadius>		<Type>	FLOAT	</Type>	</splashRadius>
+			<position>		<Type>	VECTOR3	</Type>	</position>
+			<velocity>		<Type>	VECTOR3	</Type>	</velocity>
+			<shotID>		<Type>	SHOT_ID	</Type>	</shotID>
+			<nowTime>		<Type>	FLOAT	</Type>	</nowTime>
+			<splashSize>	<Type>	FLOAT	</Type>	</splashSize>
 		</Properties>
 	</DEPTH_CHARGE>
 
 	<DEPTH_CHARGES_PACK>
 		FIXED_DICT
 		<Properties>
-			<ownerID>			<Type>	PLAYER_ID	</Type>	</ownerID>
-			<salvoID>			<Type>	INT32	</Type>	</salvoID>
-			<paramsID>			<Type>	GAMEPARAMS_ID	</Type> </paramsID>
-			<depthCharges>		<Type>	ARRAY 	<of> DEPTH_CHARGE </of> </Type>	</depthCharges>
+			<ownerID>		<Type>	PLAYER_ID						</Type>	</ownerID>
+			<salvoID>		<Type>	INT32							</Type>	</salvoID>
+			<paramsID>		<Type>	GAMEPARAMS_ID					</Type>	</paramsID>
+			<depthCharges>	<Type>	ARRAY <of> DEPTH_CHARGE </of> 	</Type>	</depthCharges>
 		</Properties>
 	</DEPTH_CHARGES_PACK>
+
+	<AIR_SUPPORT_DEPTH_CHARGES_PACK>
+		FIXED_DICT
+		<Parent>DEPTH_CHARGES_PACK</Parent>
+		<Properties>
+			<squadronID><Type>	PLANE_ID	</Type></squadronID>
+		</Properties>
+	</AIR_SUPPORT_DEPTH_CHARGES_PACK>
 
 	<TERMINAL_BALLISTICS_INFO>
 		FIXED_DICT
@@ -822,7 +864,7 @@
 		</Properties>
 	</SURFACE_BROADCAST_ZONE_INFO>
 
-    <SUBMARINE_HYDROPHONE_TARGET_INFO>
+    <HYDROPHONE_TARGET_INFO>
         FIXED_DICT
 		<Properties>
 			<entityID> 		<Type> ENTITY_ID 	    </Type> </entityID>
@@ -831,7 +873,7 @@
 			<yaw> 	        <Type> FLOAT 		    </Type> </yaw>
 			<pitch> 	    <Type> FLOAT 		    </Type> </pitch>
 		</Properties>
-	</SUBMARINE_HYDROPHONE_TARGET_INFO>
+	</HYDROPHONE_TARGET_INFO>
 
 
 	<READY_CLIENTS_LIST>
@@ -854,12 +896,6 @@
 		</Properties>
 		<implementedBy>AttentionMarkerDef.converter</implementedBy>
 	</ATTENTION_MARKER_STATE>
-
-	<!--<BUILDINGS_STATE>-->
-		<!--FIXED_DICT-->
-		<!--<Properties>-->
-		<!--</Properties>-->
-	<!--</BUILDINGS_STATE>-->
 
 	<CLIENT_ANIMATION_STATE>
 		FIXED_DICT
@@ -1434,7 +1470,7 @@
 		<AllowNone>true</AllowNone>
 	</BATTLE_LEVELING_STATE>
 
-	<!-- PRIVATE_BATTLE_LOGIC_STATE is deprecated, use PRIVATE_VEHICLE_STATE instead  (WWSD-171385)-->
+	<!-- PRIVATE_BATTLE_LOGIC_STATE is deprecated, use PRIVATE_VEHICLE_STATE instead  (MKDEV-171385)-->
 	<PRIVATE_BATTLE_LOGIC_STATE>
 		FIXED_DICT
 		<Properties>
@@ -1516,19 +1552,19 @@
 	<SHIP_LIMIT_RESTRICTION>
 		FIXED_DICT
 		<Properties>
-			<ships><Type>ARRAY<of>INT32</of></Type></ships>
-			<limit><Type>INT32</Type></limit>
+			<ships><Type> ARRAY <of> SHIP_ID </of> </Type></ships>
+			<limit><Type> INT32 </Type></limit>
 		</Properties>
 	</SHIP_LIMIT_RESTRICTION>
 
 	<RESTRICTION_FILTER>
 		FIXED_DICT
 		<Properties>
-			<concreteShips><Type>ARRAY<of>INT32</of></Type></concreteShips>
-			<excludeShips><Type>ARRAY<of>INT32</of></Type></excludeShips>
-			<shipTypes><Type>ARRAY<of>SHIP_TYPE_ID</of></Type></shipTypes>
-			<shipLevels><Type>ARRAY<of>INT8</of></Type></shipLevels>
-			<nations><Type>ARRAY<of>SHIP_NATION_ID</of></Type></nations>
+			<concreteShips><Type> ARRAY <of> SHIP_ID </of> </Type></concreteShips>
+			<excludeShips><Type> ARRAY <of> SHIP_ID </of> </Type></excludeShips>
+			<shipTypes><Type> ARRAY <of> SHIP_TYPE_ID </of> </Type></shipTypes>
+			<shipLevels><Type> ARRAY <of> INT8 </of> </Type></shipLevels>
+			<nations><Type> ARRAY <of> SHIP_NATION_ID </of> </Type></nations>
 		</Properties>
 	</RESTRICTION_FILTER>
 
@@ -1659,6 +1695,7 @@
 			<dogTag><Type> ARRAY <of> GAMEPARAMS_ID </of></Type></dogTag>
 			<clanInfo><Type> PLAYER_CLAN_INFO </Type></clanInfo>
 			<botConfig><Type> TRAINING_ROOM_BOT_CONFIG_DEF </Type></botConfig>
+			<ratingInfo><Type> UINT16 </Type></ratingInfo>
 		</Properties>
 		<implementedBy> TrainingRoomCommonUtils.TrainingRoomUserDef.converter </implementedBy>
 	</TRAINING_ROOM_USER_DEF>
@@ -1855,6 +1892,7 @@
 			<isTeamKiller><Type>UINT8</Type></isTeamKiller>
 			<suspended><Type>UINT8</Type></suspended>
 			<dataRevision><Type>UINT64</Type></dataRevision>
+			<ratingInfo><Type>UINT16</Type></ratingInfo>
 		</Properties>
 		<implementedBy>PlayerDigestDef.digestConverter</implementedBy>
 	</PLAYER_DIGEST>
@@ -2075,13 +2113,14 @@
 	<ATTACHED_PINGER_WAVE>
 		FIXED_DICT
 		<Properties>
-			<targetId><Type>ENTITY_ID</Type></targetId>
-			<localPos><Type>VECTOR3</Type></localPos>
-			<side><Type>INT8</Type></side>
-			<sectorWidth><Type>FLOAT</Type></sectorWidth>
-			<count><Type>UINT8</Type></count>
-			<lifeTime><Type>FLOAT</Type></lifeTime>
-			<invisibleHitPos><Type>VECTOR3</Type></invisibleHitPos>
+			<waveID>				<Type>OUTGOING_WAVE_ID</Type>   </waveID>
+			<targetID>				<Type>ENTITY_ID</Type>			</targetID>
+			<lifeTime>				<Type>FLOAT</Type>				</lifeTime>
+			<sectorWidth>			<Type>FLOAT</Type>				</sectorWidth>
+			<localPosition>			<Type>VECTOR3</Type>			</localPosition>
+			<hitCount>				<Type>PING_HIT_COUNT</Type>		</hitCount>
+			<hitSide>				<Type>PING_HIT_SIDE</Type>		</hitSide>
+			<invisibleHitPos>		<Type>VECTOR3</Type>			</invisibleHitPos>
 		</Properties>
 	</ATTACHED_PINGER_WAVE>
 
@@ -2170,6 +2209,11 @@
 		<implementedBy>MinefieldStatistics.converter</implementedBy>
 	</MINEFIELD_HEAT_MAP_EVENT_DATA>
 
+	<ACOUSTIC_TORPEDO_DEATH_INFO>
+		USER_TYPE
+		<implementedBy>AcousticTorpedoStatistics.deathInfoConverter</implementedBy>
+	</ACOUSTIC_TORPEDO_DEATH_INFO>
+
 	<QUICK_COMMAND>
 		USER_TYPE
 		<implementedBy>CommonQuickCommands.QuickCommandConverter.converter</implementedBy>
@@ -2184,6 +2228,14 @@
 		USER_TYPE
 		<implementedBy>Fields.MinefieldInfo.planeMinefieldInfoConverter</implementedBy>
 	</PLANE_MINEFIELD_INFO>
+
+	<MINE_INFO>
+		FIXED_DICT
+		<Properties>
+			<mineIndex><Type>MINE_ID</Type></mineIndex>
+			<minePosition><Type>VECTOR2</Type></minePosition>
+		</Properties>
+	</MINE_INFO>
 
 	<CREATE_BATTLE_SESSION_PARAMS>
 		FIXED_DICT
@@ -2225,4 +2277,144 @@
 		</Properties>
 		<implementedBy>RestorePointConverter.converter</implementedBy>
 	</RESTORE_POINT>
+
+	<BASEAPP_AGENT_MAP_INFO>
+		FIXED_DICT
+		<Properties>
+			<mapID><Type> INT16 </Type></mapID> 	 <!-- MAP_ID or -1 as service value -->
+			<freeArenasCount><Type> UINT16 </Type></freeArenasCount>
+			<busyArenasCount><Type> UINT16 </Type></busyArenasCount>
+			<minDiscreteLoad><Type> INT8 </Type></minDiscreteLoad>
+		</Properties>
+		<implementedBy> ServerCommonDefs.BaseAppAgentMapInfo.baseAppAgentMapInfoConverter </implementedBy>
+	</BASEAPP_AGENT_MAP_INFO>
+
+	<TOURNAMENT_ROOM_TEAM_DEF>
+		FIXED_DICT
+		<Properties>
+			<teamID><Type> TEAM_ID </Type></teamID>
+			<teamName><Type> UNICODE_STRING </Type></teamName>
+			<teamSize><Type> UINT8 </Type></teamSize>
+		</Properties>
+		<implementedBy> TournamentsCommonUtils.Defs.teamDefConverter </implementedBy>
+	</TOURNAMENT_ROOM_TEAM_DEF>
+
+	<TOURNAMENT_ROOM_TEAM_VALIDATION_INFO>
+		FIXED_DICT
+		<Properties>
+			<teamID><Type> TEAM_ID </Type></teamID>
+			<validationErrors><Type> ARRAY <of> UINT8 </of> </Type></validationErrors>
+		</Properties>
+		<implementedBy> TournamentsCommonUtils.Defs.teamValidationInfoConverter </implementedBy>
+	</TOURNAMENT_ROOM_TEAM_VALIDATION_INFO>
+
+	<TOURNAMENT_ROOM_SESSION_INFO>
+		FIXED_DICT
+		<Properties>
+			<sessionID><Type> TOURNAMENT_ROOM_SESSION_ID </Type></sessionID>
+			<sessionStartTime><Type> TIMESTAMP </Type></sessionStartTime>
+			<sessionStage><Type> STATE </Type></sessionStage>
+			<battleStartTime><Type> TIMESTAMP </Type></battleStartTime>
+			<mapID><Type> MAP_ID </Type></mapID>
+			<scenario><Type> STRING </Type></scenario>
+			<battleDuration><Type> UINT16 </Type></battleDuration>
+			<isSpawnSwapped><Type> BOOL </Type></isSpawnSwapped>
+			<endSessionResult><Type> UINT8 </Type></endSessionResult>
+			<endSessionTime><Type> TIMESTAMP </Type></endSessionTime>
+			<teamsValidationInfos><Type> ARRAY <of> TOURNAMENT_ROOM_TEAM_VALIDATION_INFO </of> </Type></teamsValidationInfos>
+		</Properties>
+		<AllowNone> true </AllowNone>
+		<implementedBy> TournamentsCommonUtils.Defs.sessionInfoConverter </implementedBy>
+	</TOURNAMENT_ROOM_SESSION_INFO>
+
+	<TOURNAMENT_ROOM_INVITE_DEF>
+		FIXED_DICT
+		<Properties>
+			<roomWebID><Type> TOURNAMENT_ROOM_WEB_ID </Type></roomWebID>
+			<description><Type> UNICODE_STRING </Type></description>
+			<sessionInfo><Type> TOURNAMENT_ROOM_SESSION_INFO </Type></sessionInfo>
+			<teamsDefs><Type> ARRAY <of> TOURNAMENT_ROOM_TEAM_DEF </of> </Type></teamsDefs>
+		</Properties>
+		<implementedBy> TournamentsCommonUtils.Defs.inviteDefConverter </implementedBy>
+	</TOURNAMENT_ROOM_INVITE_DEF>
+
+	<TOURNAMENT_ROOM_MEMBER_DEF>
+		FIXED_DICT
+		<Properties>
+			<id><Type> PLAYER_ID </Type></id>
+			<dbid><Type> DB_ID </Type></dbid>
+			<name><Type> STRING </Type></name>
+			<level><Type> UINT8 </Type></level>
+			<dogTag><Type> ARRAY <of> GAMEPARAMS_ID </of> </Type></dogTag>
+			<clanInfo><Type> PLAYER_CLAN_INFO </Type></clanInfo>
+			<shipID><Type> SHIP_ID </Type></shipID>
+			<teamID><Type> TEAM_ID </Type></teamID>
+			<isCoreMember><Type> BOOL </Type></isCoreMember>
+			<sessionState><Type> STATE </Type></sessionState>
+			<managementRole><Type> UINT8 </Type></managementRole>
+			<isConnected><Type> BOOL </Type></isConnected>
+		</Properties>
+		<AllowNone> true </AllowNone>
+		<implementedBy> TournamentsCommonUtils.Defs.memberDefConverter </implementedBy>
+	</TOURNAMENT_ROOM_MEMBER_DEF>
+
+	<TOURNAMENT_ROOM_INVITEE_DEF>
+		FIXED_DICT
+		<Properties>
+			<id><Type> PLAYER_ID </Type></id>
+			<dbid><Type> DB_ID </Type></dbid>
+		</Properties>
+		<implementedBy> TournamentsCommonUtils.Defs.inviteeDefConverter </implementedBy>
+	</TOURNAMENT_ROOM_INVITEE_DEF>
+
+	<TOURNAMENT_ROOM_COMMON_DEF>
+		FIXED_DICT
+		<Properties>
+			<roomWebID><Type> TOURNAMENT_ROOM_WEB_ID </Type></roomWebID>
+			<description><Type> UNICODE_STRING </Type></description>
+			<shipRestrictions><Type> SHIP_RESTRICTIONS </Type></shipRestrictions>
+			<needToHideShips><Type> BOOL </Type></needToHideShips>
+			<isFogOfWar><Type> BOOL </Type></isFogOfWar>
+			<isViewShipInfoDisabled><Type> BOOL </Type></isViewShipInfoDisabled>
+		</Properties>
+		<AllowNone> true </AllowNone>
+		<implementedBy> TournamentsCommonUtils.Defs.commonDefConverter </implementedBy>
+	</TOURNAMENT_ROOM_COMMON_DEF>
+
+	<TOURNAMENT_ROOM_PARTICIPANT_DEF>
+		FIXED_DICT
+		<Properties>
+			<spaID><Type> DB_ID </Type></spaID>
+			<teamID><Type> TEAM_ID </Type></teamID>
+			<managementRole><Type> UINT8 </Type></managementRole>
+		</Properties>
+		<implementedBy> TournamentsCommonUtils.Defs.participantDefConverter </implementedBy>
+	</TOURNAMENT_ROOM_PARTICIPANT_DEF>
+
+	<TOURNAMENT_ROOM_INITIAL_DATA>
+		FIXED_DICT
+		<Properties>
+			<roomCommonDef><Type> TOURNAMENT_ROOM_COMMON_DEF </Type></roomCommonDef>
+			<teamDefs><Type> ARRAY <of> TOURNAMENT_ROOM_TEAM_DEF </of> </Type></teamDefs>
+			<participantsDefs><Type> ARRAY <of> TOURNAMENT_ROOM_PARTICIPANT_DEF </of> </Type></participantsDefs>
+			<sessionsInfos><Type> ARRAY <of> TOURNAMENT_ROOM_SESSION_INFO </of> </Type></sessionsInfos>
+		</Properties>
+		<implementedBy> TournamentsCommonUtils.Defs.initialDataConverter </implementedBy>
+	</TOURNAMENT_ROOM_INITIAL_DATA>
+
+	<TOURNAMENT_ROOM_MEMBERSHIP_DATA>
+		FIXED_DICT
+		<Properties>
+			<roomCommonDef><Type> TOURNAMENT_ROOM_COMMON_DEF </Type></roomCommonDef>
+			<teamDefs><Type> ARRAY <of> TOURNAMENT_ROOM_TEAM_DEF </of> </Type></teamDefs>
+			<membersDefs><Type> ARRAY <of> TOURNAMENT_ROOM_MEMBER_DEF </of> </Type></membersDefs>
+			<removedMembersSPAIDs><Type> ARRAY <of> DB_ID </of> </Type></removedMembersSPAIDs>
+			<sessionsInfos><Type> ARRAY <of> TOURNAMENT_ROOM_SESSION_INFO </of> </Type></sessionsInfos>
+			<currentSessionID><Type> TOURNAMENT_ROOM_SESSION_ID </Type></currentSessionID>
+			<lastEndedSessionID><Type> TOURNAMENT_ROOM_SESSION_ID </Type></lastEndedSessionID>
+			<destroyTimestamp><Type> TIMESTAMP </Type></destroyTimestamp>
+		</Properties>
+		<implementedBy> TournamentsCommonUtils.Defs.membershipDataConverter </implementedBy>
+	</TOURNAMENT_ROOM_MEMBERSHIP_DATA>
+
 </root>

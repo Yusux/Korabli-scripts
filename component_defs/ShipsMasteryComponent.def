@@ -4,11 +4,6 @@
 
 	<ClientMethods>
 		<startSyncDelay/>
-		<receiveMasteryRankVisibilityInBattle>
-			<Args>
-				<value> BOOL </value>
-			</Args>
-		</receiveMasteryRankVisibilityInBattle>
 		<receiveShipMasteryUpdate>
 			<Args>
 				<shipID> SHIP_ID </shipID>

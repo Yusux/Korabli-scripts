@@ -41,14 +41,14 @@
 			</Args>
 		</onCountdownStageChanged>
 
-		<receiveChatMassage>
+		<receiveChatMessage>
 			<Args>
 				<trainingRoomID> ENTITY_ID </trainingRoomID>
 				<senderID> PLAYER_ID </senderID>
 				<message> STRING </message>
-				<messageCreationTime> UINT32 </messageCreationTime>
+				<messageCreationTime> TIMESTAMP </messageCreationTime>
 			</Args>
-		</receiveChatMassage>
+		</receiveChatMessage>
 
 		<startSession>
 			<ReturnValues>
@@ -193,6 +193,13 @@
 			<Exposed/>
 		</applyChanges>
 
+		<sendMessageToPlayers>
+			<Args>
+				<message> STRING </message>
+			</Args>
+			<Exposed/>
+		</sendMessageToPlayers>
+
 	</BaseMethods>
 
 	<ClientMethods>
@@ -210,13 +217,13 @@
 			</Args>
 		</onCountdownStageChanged>
 
-		<receiveChatMassage>
+		<receiveChatMessage>
 			<Args>
 				<senderID> PLAYER_ID </senderID>
 				<message> STRING </message>
-				<messageCreationTime> UINT32 </messageCreationTime>
+				<messageCreationTime> TIMESTAMP </messageCreationTime>
 			</Args>
-		</receiveChatMassage>
+		</receiveChatMessage>
 
 	</ClientMethods>
 

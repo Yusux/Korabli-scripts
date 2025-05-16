@@ -115,6 +115,11 @@
             </Type>
             <Flags>OWN_CLIENT</Flags>
         </worldSound>
+        <useSubmarinesPrototypeLogic>
+            <Type>BOOL</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>False</Default>
+        </useSubmarinesPrototypeLogic>
     </Properties>
     <ClientMethods>
         <torpedoParamsUpdate>
@@ -218,6 +223,11 @@
                 <of>DEPTH_CHARGES_PACK</of>
             </Arg>
         </receiveDepthChargesPacks>
+        <receiveAirSupportDepthChargesPacks>
+            <Arg>ARRAY
+                <of>AIR_SUPPORT_DEPTH_CHARGES_PACK</of>
+            </Arg>
+        </receiveAirSupportDepthChargesPacks>
         <receiveLaserBeams>
             <Arg>ARRAY
                 <of>LASER_BEAM</of>
@@ -239,8 +249,10 @@
             </Arg>
         </receivePingerShotKills>
         <receiveTorpedoArmed>
-            <Arg>PLAYER_ID</Arg>
-            <Arg>UINT16</Arg>
+            <Args>
+                <ownerID>PLAYER_ID</ownerID>
+                <shotID>SHOT_ID</shotID>
+            </Args>
         </receiveTorpedoArmed>
         <receiveTorpedoSynchronization>
             <Args>
@@ -555,8 +567,10 @@
             <Arg>FLOAT</Arg>
         </onShipCollision>
         <onTerrainCollision>
-            <Arg>VECTOR3</Arg>
-            <Arg>FLOAT</Arg>
+            <Args>
+                <collisionPoint>VECTOR3</collisionPoint>
+                <serverSpeedRaw>UINT16</serverSpeedRaw>
+            </Args>
         </onTerrainCollision>
         <onEndShipCollision>
             <Arg>ENTITY_ID</Arg>
@@ -741,19 +755,26 @@
         <surfaceHydrophoneRemoveTarget>
             <Arg>ENTITY_ID</Arg>
         </surfaceHydrophoneRemoveTarget>
-        <addSubmarineHydrophoneTargets>
+        <addHydrophoneTargets>
             <Arg>ARRAY
-                <of>SUBMARINE_HYDROPHONE_TARGET_INFO</of>
+                <of>HYDROPHONE_TARGET_INFO</of>
             </Arg>
-        </addSubmarineHydrophoneTargets>
-        <clearSubmarineHydrophone></clearSubmarineHydrophone>
+        </addHydrophoneTargets>
         <hideIntuitionIndicator></hideIntuitionIndicator>
         <hideHydrophoneIndicator></hideHydrophoneIndicator>
         <receiveAcousticTargetID>
-            <Arg>UINT16</Arg>
-            <Arg>ENTITY_ID</Arg>
-            <Arg>FLOAT</Arg>
+            <Args>
+                <torpedoID>SHOT_ID</torpedoID>
+                <targetID>ENTITY_ID</targetID>
+                <waveID>OUTGOING_WAVE_ID</waveID>
+                <yawTargetingDisabledDistance>FLOAT</yawTargetingDisabledDistance>
+            </Args>
         </receiveAcousticTargetID>
+        <receiveAcousticTargetRemoval>
+            <Args>
+                <torpedoID>SHOT_ID</torpedoID>
+            </Args>
+        </receiveAcousticTargetRemoval>
         <ownSmokeCreated>
             <Arg>FLOAT</Arg>
         </ownSmokeCreated>
@@ -761,8 +782,6 @@
             <Arg>FLOAT</Arg>
         </clientInsideSmoke>
         <vehicleLeaveSmoke></vehicleLeaveSmoke>
-        <notifyAboutSmokePenalty></notifyAboutSmokePenalty>
-        <ownSmokeStartsFade></ownSmokeStartsFade>
         <ownSmokeTimeLifeChanges>
             <Arg>BOOL</Arg>
             <Arg>FLOAT</Arg>
@@ -833,26 +852,25 @@
         <updateBuoyancyRudderCruise>
             <Arg>FLOAT</Arg>
         </updateBuoyancyRudderCruise>
-        <activateAutoAirSupport>
+        <receiveAutoAirSupportActivation>
             <Args>
-                <index>UINT8</index>
-                <squadronID>PLANE_ID</squadronID>
-                <airSupportShotID>SHOT_ID</airSupportShotID>
+                <chargerIndex>AIR_SUPPORT_CHARGER_INDEX</chargerIndex>
             </Args>
-        </activateAutoAirSupport>
-        <activateManualAirSupport>
+        </receiveAutoAirSupportActivation>
+        <receiveManualAirSupportActivation>
             <Args>
-                <index>UINT8</index>
+                <chargerIndex>AIR_SUPPORT_CHARGER_INDEX</chargerIndex>
                 <squadronID>PLANE_ID</squadronID>
-                <position>VECTOR3</position>
+                <attackPoint>VECTOR3</attackPoint>
                 <aimLength>FLOAT</aimLength>
-                <airSupportShotID>SHOT_ID</airSupportShotID>
             </Args>
-        </activateManualAirSupport>
-        <manualAirSupportDeactivated>#TODO:have to be removed
-            <Arg>UINT8</Arg>
-            <Arg>PLANE_ID</Arg>
-        </manualAirSupportDeactivated>
+        </receiveManualAirSupportActivation>
+        <receiveManualAirSupportDeactivation># TODO: have to be removed
+            <Args>
+                <chargerIndex>AIR_SUPPORT_CHARGER_INDEX</chargerIndex>
+                <squadronID>PLANE_ID</squadronID>
+            </Args>
+        </receiveManualAirSupportDeactivation>
         <diplomacyRejection>
             <Arg>UINT8</Arg>
         </diplomacyRejection>
@@ -865,6 +883,20 @@
             <Arg>ENTITY_ID</Arg>
             <Arg>VECTOR2</Arg>
         </receiveOilLeakPosition>
+        <receivePingerSelfExposureWave>
+            <Args>
+                <position2D>VECTOR2</position2D>
+                <yaw>FLOAT</yaw>
+                <size>FLOAT</size>
+            </Args>
+        </receivePingerSelfExposureWave>
+        <receiveVehicleShadows>
+            <Args>
+                <vehicleShadowInfos>ARRAY
+                    <of>VEHICLE_SHADOW_INFO</of>
+                </vehicleShadowInfos>
+            </Args>
+        </receiveVehicleShadows>
         <receivePingerLaunchPosition>
             <Arg>ENTITY_ID</Arg>
             <Arg>FLAT_VECTOR</Arg>

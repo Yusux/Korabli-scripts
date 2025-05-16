@@ -146,6 +146,13 @@
 			<Persistent> true </Persistent>
 			<Default> 0 </Default>
 		</suspended>
+
+		<ratingInfo>
+			<Type> UINT16 </Type>
+			<Flags> BASE </Flags>
+			<Persistent> true </Persistent>
+			<Default> 0 </Default>
+		</ratingInfo>
 	</Properties>
 
 	<BaseMethods>

@@ -1,0 +1,27 @@
+<root>
+	<BaseMethods>
+	</BaseMethods>
+	
+	<ClientMethods>
+		<receiveSeasonProgress>
+			<Args>
+				<seasonProgress> PYTHON </seasonProgress>
+			</Args>
+		</receiveSeasonProgress>
+		<receiveSeasonStats>
+			<Args>
+				<seasonStats> PYTHON </seasonStats>
+			</Args>
+		</receiveSeasonStats>
+	</ClientMethods>
+	
+	<ofEntity>
+		<Account/>
+	</ofEntity>
+	
+	<ofBWComponent>
+		<base/>
+		<bot/>
+		<client/>
+	</ofBWComponent>
+</root>

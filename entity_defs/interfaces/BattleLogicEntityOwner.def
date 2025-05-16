@@ -17,6 +17,7 @@
 	<TempProperties>
 		<battleLogic/>
 		<isRemovedFromWorld/>
+		<useSubmarinesPrototypeLogic/>
 	</TempProperties>
 
 	<CellMethods>

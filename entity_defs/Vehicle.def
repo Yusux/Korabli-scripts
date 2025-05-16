@@ -199,6 +199,16 @@
             <Flags>ALL_CLIENTS</Flags>
             <Default>0</Default>
         </movementControlBlockType>
+        <inHydrophoneRangeType>
+            <Type>UINT8</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>0</Default>
+        </inHydrophoneRangeType>
+        <shadowReasons>
+            <Type>SHADOW_REASON</Type>
+            <Flags>ALL_CLIENTS</Flags>
+            <Default>0</Default>
+        </shadowReasons>
     </Properties>
     <ClientMethods>
         <onAvatarReady></onAvatarReady>
@@ -407,52 +417,97 @@
             <Arg>WEAPON_TYPE</Arg>
             <Arg>GUN_DIRECTIONS</Arg>
         </receiveGunSyncRotations>
-        <resetAllWaveEnemyHits></resetAllWaveEnemyHits>
-        <onPingDeactivated>
-            <Arg>ENTITY_ID</Arg>
-        </onPingDeactivated>
-        <resetEnemyHit>
-            <Arg>ENTITY_ID</Arg>
-        </resetEnemyHit>
-        <onPingerWaveEnemyHit>
-            <Arg>ENTITY_ID</Arg>
-            <Arg>FLOAT</Arg>
-            <Arg>FLOAT</Arg>
-            <Arg>VECTOR3</Arg>
-            <Arg>INT8</Arg>
-            <Arg>UINT8</Arg>
-        </onPingerWaveEnemyHit>
-        <updateWaveEnemyHit>
-            <Arg>ENTITY_ID</Arg>
-            <Arg>FLOAT</Arg>
-            <Arg>FLOAT</Arg>
-            <Arg>UINT8</Arg>
-        </updateWaveEnemyHit>
-        <updateInvisibleWavedPoint>
-            <Arg>ENTITY_ID</Arg>
-            <Arg>NULLABLE_VECTOR3</Arg>
-        </updateInvisibleWavedPoint>
-        <receiveEnemyHitWaveDump>
+        <receiveOnPingDeactivated>
+            <Args>
+                <targetID>ENTITY_ID</targetID>
+            </Args>
+        </receiveOnPingDeactivated>
+        <receiveOutgoingWaveAssignedTorpedo>
+            <Args>
+                <waveID>OUTGOING_WAVE_ID</waveID>
+            </Args>
+        </receiveOutgoingWaveAssignedTorpedo>
+        <receiveAllTargetOutgoingWavesRemoval>
+            <Args>
+                <targetID>ENTITY_ID</targetID>
+            </Args>
+        </receiveAllTargetOutgoingWavesRemoval>
+        <receiveSingleOutgoingWaveRemoval>
+            <Args>
+                <waveID>OUTGOING_WAVE_ID</waveID>
+            </Args>
+        </receiveSingleOutgoingWaveRemoval>
+        <receiveTargetOutgoingWavesTimeReduction>
+            <Args>
+                <targetID>ENTITY_ID</targetID>
+                <reduceTime>FLOAT</reduceTime>
+            </Args>
+        </receiveTargetOutgoingWavesTimeReduction>
+        <receiveAllOutgoingWavesRemoval></receiveAllOutgoingWavesRemoval>
+        <receiveSingleIncomingWaveRemoval>
+            <Args>
+                <shooterID>ENTITY_ID</shooterID>
+                <waveID>OUTGOING_WAVE_ID</waveID>
+            </Args>
+        </receiveSingleIncomingWaveRemoval>
+        <receiveNewOutgoingWave>
+            <Args>
+                <waveID>OUTGOING_WAVE_ID</waveID>
+                <targetID>ENTITY_ID</targetID>
+                <lifeTime>FLOAT</lifeTime>
+                <sectorWidth>FLOAT</sectorWidth>
+                <localPosition>VECTOR3</localPosition>
+                <hitSide>PING_HIT_SIDE</hitSide>
+                <hitCount>PING_HIT_COUNT</hitCount>
+            </Args>
+        </receiveNewOutgoingWave>
+        <receiveOutgoingWaveUpdate>
+            <Args>
+                <waveID>OUTGOING_WAVE_ID</waveID>
+                <localPosition>VECTOR3</localPosition>
+                <lifeTime>FLOAT</lifeTime>
+                <sectorWidth>FLOAT</sectorWidth>
+                <hitCount>PING_HIT_COUNT</hitCount>
+            </Args>
+        </receiveOutgoingWaveUpdate>
+        <receiveOutgoingWaveInvisiblePointUpdate>
+            <Args>
+                <waveID>OUTGOING_WAVE_ID</waveID>
+                <position>NULLABLE_VECTOR3</position>
+            </Args>
+        </receiveOutgoingWaveInvisiblePointUpdate>
+        <receiveOutgoingWavesDump>
             <Arg>ARRAY
                 <of>ATTACHED_PINGER_WAVE</of>
             </Arg>
-        </receiveEnemyHitWaveDump>
-        <receiveWaveFromEnemy>
-            <Arg>PLAYER_ID</Arg>
-            <Arg>VECTOR3</Arg>
-            <Arg>INT8</Arg>
-            <Arg>FLOAT</Arg>
-            <Arg>FLOAT</Arg>
-            <Arg>UINT8</Arg>
-            <Arg>FLOAT</Arg>
-        </receiveWaveFromEnemy>
-        <receiveUpdateAcousticHitFromEnemy>
-            <Arg>PLAYER_ID</Arg>
-            <Arg>FLOAT</Arg>
-            <Arg>FLOAT</Arg>
-            <Arg>UINT8</Arg>
-            <Arg>FLOAT</Arg>
-        </receiveUpdateAcousticHitFromEnemy>
+        </receiveOutgoingWavesDump>
+        <receiveNewIncomingWave>
+            <Args>
+                <shooterID>ENTITY_ID</shooterID>
+                <waveID>OUTGOING_WAVE_ID</waveID>
+                <localPosition>VECTOR3</localPosition>
+                <hitSide>PING_HIT_SIDE</hitSide>
+                <lifetime>FLOAT</lifetime>
+                <width>FLOAT</width>
+                <hitCount>PING_HIT_COUNT</hitCount>
+                <waveYaw>FLOAT</waveYaw>
+            </Args>
+        </receiveNewIncomingWave>
+        <receiveIncomingWaveUpdate>
+            <Args>
+                <shooterID>ENTITY_ID</shooterID>
+                <waveID>OUTGOING_WAVE_ID</waveID>
+                <lifetime>FLOAT</lifetime>
+                <sectorWidth>FLOAT</sectorWidth>
+                <hitCount>PING_HIT_COUNT</hitCount>
+                <waveYaw>FLOAT</waveYaw>
+            </Args>
+        </receiveIncomingWaveUpdate>
+        <receiveTorpedoAcousticShooterModeChange>
+            <Args>
+                <acousticShooterMode>SUBMARINE_ACOUSTIC_SHOOTER_MODE</acousticShooterMode>
+            </Args>
+        </receiveTorpedoAcousticShooterModeChange>
         <syncRageMode>
             <Arg>INT8</Arg>
             <Arg>INT8</Arg>
