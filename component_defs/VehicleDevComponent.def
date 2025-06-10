@@ -65,6 +65,13 @@
 			<Exposed/>
 		</suicide>
 
+		<applyModifiers>
+			<Exposed/>
+			<Args>
+				<modifiers> MODIFIERS </modifiers>
+			</Args>
+		</applyModifiers>
+
 	</CellMethods>
 
 	<BaseMethods>

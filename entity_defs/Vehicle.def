@@ -32,7 +32,6 @@
             <Type>BOOL</Type>
             <Flags>ALL_CLIENTS</Flags>
             <Default>0</Default>
-            <SaveWowsServerReplays></SaveWowsServerReplays>
         </isOnForsage>
         <regenCrewHpLimit>
             <Type>FLOAT32</Type>
@@ -93,29 +92,24 @@
             <Type>UINT32</Type>
             <Flags>ALL_CLIENTS</Flags>
             <Default>0</Default>
-            <SaveWowsServerReplays></SaveWowsServerReplays>
         </selectedWeapon>
         <serverSpeedRaw>
             <Type>UINT16</Type>
             <Flags>ALL_CLIENTS</Flags>
-            <SaveWowsServerReplays></SaveWowsServerReplays>
         </serverSpeedRaw>
         <maxServerSpeedRaw>
             <Type>UINT32</Type>
             <Flags>ALL_CLIENTS</Flags>
             <Default>0</Default>
-            <SaveWowsServerReplays></SaveWowsServerReplays>
             <SendLatestOnly>true</SendLatestOnly>
         </maxServerSpeedRaw>
         <speedSignDir>
             <Type>INT8</Type>
             <Flags>ALL_CLIENTS</Flags>
-            <SaveWowsServerReplays></SaveWowsServerReplays>
         </speedSignDir>
         <enginePower>
             <Type>UINT8</Type>
             <Flags>ALL_CLIENTS</Flags>
-            <SaveWowsServerReplays></SaveWowsServerReplays>
         </enginePower>
         <engineDir>
             <Type>INT8</Type>

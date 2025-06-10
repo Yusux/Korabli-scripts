@@ -346,6 +346,7 @@
             <Arg>UINT8</Arg>
             <Arg>UINT16</Arg>
         </targetLoss>
+        <clearShots></clearShots>
         <receive_addSquadron>
             <Arg>GAMEPARAMS_ID</Arg>
             <Arg>UINT8</Arg>
@@ -791,8 +792,9 @@
                 <consumablesIds>ARRAY
                     <of>UINT8</of>
                 </consumablesIds>
-                <count>UINT8</count>
+                <count>INT8</count>
                 <reason>REASON_ID</reason>
+                <hideHint>BOOL</hideHint>
             </Args>
         </increaseConsumablesCount>
         <increaseSquadronsConsumablesCount>
@@ -925,6 +927,12 @@
                 <yaw>FLOAT</yaw>
             </Args>
         </onPlayWorldSound>
+        <setCruiseSpeedLimits>
+            <Args>
+                <minCruiseSpeed>FLOAT</minCruiseSpeed>
+                <maxCruiseSpeed>FLOAT</maxCruiseSpeed>
+            </Args>
+        </setCruiseSpeedLimits>
     </ClientMethods>
     <CellMethods>
         <useConsumable>

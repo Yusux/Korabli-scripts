@@ -12,8 +12,6 @@
 		<Building />
 		<MasterChanger />
 		<BattleLogic />
-		<ReplayLeech />
-		<ReplayConnectionHandler />
 		<InteractiveZone />
 		<OfflineAvatar />
 		<OfflineVehicle />

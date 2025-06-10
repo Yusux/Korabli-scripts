@@ -4,6 +4,15 @@
 	</ClientMethods>
 
 	<BaseMethods>
+		<exchangeShipMaterials>
+			<Exposed/>
+			<Args>
+				<ShipLevel> UINT8 </ShipLevel>
+			</Args>
+			<ReturnValues>
+				<result> MSGPACK_BLOB </result>
+			</ReturnValues>
+		</exchangeShipMaterials>
 	</BaseMethods>
 
 	<ofEntity>

@@ -55,6 +55,7 @@
 	<TOURNAMENT_ROOM_WEB_ID> INT32 </TOURNAMENT_ROOM_WEB_ID>
 	<TOURNAMENT_ROOM_SESSION_ID> INT8 </TOURNAMENT_ROOM_SESSION_ID>
 	<EVENT_LOGIC_FLAGS> UINT8 </EVENT_LOGIC_FLAGS>
+	<SMOKE_REASON> UINT8 </SMOKE_REASON>
 
 	<MSGPACK_BLOB>
 		USER_TYPE
@@ -893,6 +894,7 @@
 			<ownerTeam><Type>TEAM_ID</Type></ownerTeam>
 			<timeToLive><Type>UINT16</Type></timeToLive>
 			<endTime><Type>UINT16</Type></endTime>
+			<subMarker><Type>UINT8</Type></subMarker>
 		</Properties>
 		<implementedBy>AttentionMarkerDef.converter</implementedBy>
 	</ATTENTION_MARKER_STATE>
@@ -1320,10 +1322,10 @@
 		</Properties>
 	</INTERACTIVE_ZONE_STATE>
 
-	<MODIFIER_STATE>
+	<MODIFIERS>
 		USER_TYPE
-		<implementedBy>Modifiers.ModifierDef.converter</implementedBy>
-	</MODIFIER_STATE>
+		<implementedBy>CommonModifiers.Modifiers.converter</implementedBy>
+	</MODIFIERS>
 
 	<DEV_FLAGS>
 		USER_TYPE
@@ -1438,9 +1440,9 @@
 	<TRIGGERS_STATE>
 		FIXED_DICT
 		<Properties>
-			<modifier><Type> MODIFIER_STATE </Type></modifier>
+			<modifiers> <Type> MODIFIERS </Type> </modifiers>
 		</Properties>
-		<AllowNone>true</AllowNone>
+		<AllowNone> true </AllowNone>
 	</TRIGGERS_STATE>
 
 	<DIPLOMACY_TICKET>
@@ -1723,34 +1725,6 @@
 		<AllowNone>true</AllowNone>
 	</VCL_SHOTS_ENTITY_STATS>
 
-	<REPLAY_METADATA_STATS>
-		FIXED_DICT
-		<Properties>
-			<credits><Type>UINT32</Type></credits>
-			<exp><Type>UINT32</Type></exp>
-			<damage><Type>UINT32</Type></damage>
-			<medals><Type>UINT8</Type></medals>
-			<kills><Type>UINT8</Type></kills>
-		</Properties>
-	</REPLAY_METADATA_STATS>
-
-	<REPLAY_METADATA>
-		FIXED_DICT
-		<Properties>
-			<replayId><Type>STRING</Type></replayId>
-			<mapName><Type>UINT16</Type></mapName>
-			<gameType><Type>INT8</Type></gameType>
-			<gameMode><Type>INT8</Type></gameMode>
-			<dateTime><Type>UINT32</Type></dateTime>
-			<version><Type>STRING</Type></version>
-			<networkInterface><Type>STRING</Type></networkInterface>
-		</Properties>
-		<implementedBy>ReplayMetadataDef.converter</implementedBy>
-	</REPLAY_METADATA>
-
-	<REPLAY_METADATA_LIST>
-		ARRAY<of>REPLAY_METADATA</of>
-	</REPLAY_METADATA_LIST>
 	<AIR_DEFENCE_AURA>
 		FIXED_DICT
 		<Properties>
@@ -1927,16 +1901,6 @@
 		<AllowNone> true </AllowNone>
 	</MAP_BORDER>
 
-	<REPLAY_DATA>
-		FIXED_DICT
-		<Properties>
-			<battleID><Type>ARENA_UNIQUE_ID</Type></battleID>
-			<permitDBIDs><Type>ARRAY<of>DB_ID</of></Type></permitDBIDs>
-			<metadata><Type>MSGPACK_BLOB</Type></metadata>
-			<readyReplay><Type>BLOB</Type></readyReplay>
-		</Properties>
-		<implementedBy>ReplayInfoDef.converter</implementedBy>
-	</REPLAY_DATA>
 
 	<PLAYER_MODE>
 		FIXED_DICT
