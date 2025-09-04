@@ -1,8 +1,7 @@
 <root>
-    <TempProperties>
-    	<_MasterEntityAPIComponent__loadEntitiesHelper/>
-    </TempProperties>
+
 	<Methods>
+
 		<createEntityOnCluster>
 			<Args>
 				<clusterID> CLUSTER_ID </clusterID>
@@ -25,28 +24,29 @@
 		</lookupAccountEntityByDBID>
 
 		<loadAccount>
-			<Arg>DB_ID</Arg>
-			<Arg>ACCOUNT_LOAD_ARGS</Arg>
+			<Args>
+				<accountDBID> DB_ID </accountDBID>
+				<loadArgs> ACCOUNT_LOAD_ARGS_DEF </loadArgs>
+			</Args>
 			<ReturnValues>
 				<account> MAILBOX </account>
 			</ReturnValues>
 		</loadAccount>
 
-		<loadEntityOnCurrentMaster>
+		<loadAccountOnCurrentMaster>
 			<Args>
-				<entityType> STRING </entityType>
-				<entityID> DB_ID </entityID>
-				<entityParams>ZIPPED_BLOB</entityParams>
+				<accountDBID> DB_ID </accountDBID>
+				<entityParams> ZIPPED_BLOB </entityParams>
 			</Args>
 			<ReturnValues>
 				<entityMailbox> MAILBOX </entityMailbox>
 			</ReturnValues>
-		</loadEntityOnCurrentMaster>
+		</loadAccountOnCurrentMaster>
 
 		<removeAccountOnCurrentMaster>
 			<Args>
-				<spaID> DB_ID </spaID>
-				<loadParams>ZIPPED_BLOB</loadParams>
+				<accountDBID> DB_ID </accountDBID>
+				<loadParams> ZIPPED_BLOB </loadParams>
 			</Args>
 			<ReturnValues>
 				<entityMailbox> UINT8 </entityMailbox>
@@ -82,13 +82,32 @@
 				<entityMailbox> MAILBOX </entityMailbox>
 			</ReturnValues>
 		</createTrainingRoomEntity>
+
+		<subscribeForLoadAccounts>
+			<Args>
+				<accountDBIDs> ARRAY <of> DB_ID </of> </accountDBIDs>
+				<subscriberMBox> MAILBOX </subscriberMBox>
+			</Args>
+			<ReturnValues>
+				<result> UINT8 </result>
+			</ReturnValues>
+		</subscribeForLoadAccounts>
+
+		<updateSubscriptionsForLoadAccounts>
+			<Args>
+				<updatedAppSubscriptions> ARRAY <of> ACCOUNT_LOAD_SUBSCRIPTION_UPDATE_DEF </of> </updatedAppSubscriptions>
+				<subscriberApp> MAILBOX </subscriberApp>
+			</Args>
+		</updateSubscriptionsForLoadAccounts>
+
 	</Methods>
 
 	<ofService>
 		<MasterService/>
 	</ofService>
-	
+
 	<ofBWComponent>
 		<service/>
 	</ofBWComponent>
+
 </root>

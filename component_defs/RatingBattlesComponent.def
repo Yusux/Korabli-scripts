@@ -1,7 +1,20 @@
 <root>
 	<BaseMethods>
+		<syncSeasonDossiersAndBestProgressInfo>
+			<Exposed/>
+			<Args>
+				<seasonID>UINT32</seasonID>
+				<vehicleID>UINT32</vehicleID>
+			</Args>
+		</syncSeasonDossiersAndBestProgressInfo>
+		<syncSeasonIDs>
+			<Exposed/>
+		</syncSeasonIDs>
+		<syncBestProgressInfoAmongAllSeasons>
+			<Exposed/>
+		</syncBestProgressInfoAmongAllSeasons>
 	</BaseMethods>
-	
+
 	<ClientMethods>
 		<receiveSeasonProgress>
 			<Args>
@@ -13,6 +26,17 @@
 				<seasonStats> PYTHON </seasonStats>
 			</Args>
 		</receiveSeasonStats>
+		<receiveSeasonIDs>
+			<Args>
+				<seasonIDs>ARRAY<of>UINT32</of></seasonIDs>
+			</Args>
+		</receiveSeasonIDs>
+		<receiveBestProgressInfo>
+			<Args>
+				<bestLeague>UINT32</bestLeague>
+				<bestLeagueProgress>UINT32</bestLeagueProgress>
+			</Args>
+		</receiveBestProgressInfo>
 	</ClientMethods>
 	
 	<ofEntity>

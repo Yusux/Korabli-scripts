@@ -6,6 +6,10 @@
     </Implements>
     <IsManualAoI>true</IsManualAoI>
     <Properties>
+        <scenarioName>
+            <Type>STRING</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </scenarioName>
         <battleType>
             <Type>UINT16</Type>
             <Flags>ALL_CLIENTS</Flags>
@@ -64,6 +68,10 @@
             <Type>EVENT_LOGIC_FLAGS</Type>
             <Flags>ALL_CLIENTS</Flags>
         </eventLogicFlags>
+        <mapId>
+            <Type>UINT32</Type>
+            <Flags>ALL_CLIENTS</Flags>
+        </mapId>
     </Properties>
     <ClientMethods>
         <onPlayWorldEffect>

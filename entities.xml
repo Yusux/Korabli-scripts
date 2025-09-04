@@ -15,6 +15,7 @@
 		<InteractiveZone />
 		<OfflineAvatar />
 		<OfflineVehicle />
+		<PresentationVehicle />
 	</ClientServerEntities>
 	
 	</root>

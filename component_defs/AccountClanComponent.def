@@ -4,11 +4,26 @@
 
 		<onGetClanBattlesStage>
 			<Args>
-				<seasonId> UINT32 </seasonId>
+				<seasonID> UINT32 </seasonID>
 				<seasonType> STRING </seasonType>
 				<stage> UINT8 </stage>
 			</Args>
 		</onGetClanBattlesStage>
+
+		<onAccountRemovedFromClan>
+			<Args>
+				<clanID> DB_ID </clanID>
+			</Args>
+		</onAccountRemovedFromClan>
+
+		<onAccountAddedToClan>
+			<Args>
+				<clanID> DB_ID </clanID>
+			</Args>
+		</onAccountAddedToClan>
+
+		<onClansDisabled>
+		</onClansDisabled>
 
 	</ClientMethods>
 

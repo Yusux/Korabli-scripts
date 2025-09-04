@@ -1,5 +1,9 @@
 <root>
 	<Properties>
+		<_MatchmakerComponent__matchingState>
+			<Type> UINT8 </Type>
+			<Flags> BASE </Flags>
+		</_MatchmakerComponent__matchingState>
 		<_MatchmakerComponent__realm>
 			<Type> STRING </Type>
 			<Flags> BASE </Flags>
@@ -17,7 +21,7 @@
 			<Flags> BASE </Flags>
 		</_MatchmakerComponent__battleStarterService>
 	</Properties>
-	
+
 	<BaseMethods>
 		<enter>
 			<Exposed/>
@@ -29,30 +33,32 @@
 				<operationID> GAMEPARAMS_ID </operationID>
 			</Args>
 		</enter>
-		
+
+		<enterMatchmakerFromBattle>
+			<Args>
+				<shipID> SHIP_ID </shipID>
+				<queueType> QUEUE_TYPE </queueType>
+				<operationID> GAMEPARAMS_ID </operationID>
+			</Args>
+		</enterMatchmakerFromBattle>
+
 		<leave>
 			<Exposed/>
 		</leave>
-		
+
 		<onEnterViaDivision>  <!-- Callback from Division -->
 			<Args>
 				<enqueueData> ENQUEUE_DATA </enqueueData>
 			</Args>
 		</onEnterViaDivision>
 
-		<onRedirectedViaDivision>  <!-- Callback from Division -->
-			<Args>
-				<enqueueData> ENQUEUE_DATA </enqueueData>
-			</Args>
-		</onRedirectedViaDivision>
-		
 		<onLeave>  <!-- Callback from Division -->
 			<Args>
 				<reason> UINT8 </reason>
 			</Args>
 		</onLeave>
 	</BaseMethods>
-	
+
 	<ClientMethods>
 		<onEnter>
 			<Args>
@@ -61,25 +67,31 @@
 				<description> PICKLED_BLOB </description>
 			</Args>
 		</onEnter>
-		
+
 		<onQueueInfoReceived>
 			<Args>
 				<queueType> GAMEPARAMS_ID </queueType>  <!-- QUEUE_TYPE (UINT16) or OPERATION_ID (GAMEPARAMS_ID/UINT32) -->
 				<queueInfo> PICKLED_BLOB </queueInfo>
 			</Args>
 		</onQueueInfoReceived>
-		
+
+		<restoreInMatchmakerState>
+			<Args>
+				<queueType> QUEUE_TYPE </queueType>
+			</Args>
+		</restoreInMatchmakerState>
+
 		<onLeave>
 			<Args>
 				<reason> UINT8 </reason>
 			</Args>
 		</onLeave>
 	</ClientMethods>
-	
+
 	<ofEntity>
 		<Account/>
 	</ofEntity>
-	
+
 	<ofBWComponent>
 		<base/>
 		<bot/>

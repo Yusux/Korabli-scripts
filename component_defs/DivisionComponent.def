@@ -41,8 +41,8 @@
 
 		<sendInvite>
 			<Args>
-				<accountDBID>INT64</accountDBID>
-				<inviteType>INT64</inviteType>
+				<inviteeSPAID> DB_ID </inviteeSPAID>
+				<inviteType> INT8 </inviteType>
 			</Args>
 			<Exposed/>
 		</sendInvite>
@@ -71,9 +71,8 @@
 
 		<setSelectedQueueType>
 			<Args>
-				<selectedQueueType>INT64</selectedQueueType>
-				<gameParamID>GAMEPARAMS_ID</gameParamID>
-				<shouldEnterMM>BOOL</shouldEnterMM>
+				<selectedQueueType> QUEUE_TYPE </selectedQueueType>
+				<gameParamID> GAMEPARAMS_ID </gameParamID>
 			</Args>
 			<Exposed/>
 		</setSelectedQueueType>

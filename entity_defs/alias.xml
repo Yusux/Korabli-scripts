@@ -1,61 +1,64 @@
 <root>
 	<BOOL> UINT8 </BOOL>
-	<PRE_BATTLE_ID>UINT32</PRE_BATTLE_ID>
-	<PLAYER_ID>INT32</PLAYER_ID>
-	<TEAM_ID>INT8</TEAM_ID>
-	<SHIP_ID>UINT32</SHIP_ID>
-	<CREW_ID>UINT32</CREW_ID>
-	<SHIP_TYPE_ID>UINT8</SHIP_TYPE_ID>
-	<SHIP_NATION_ID>UINT8</SHIP_NATION_ID>
-	<SHIP_LEVEL>UINT8</SHIP_LEVEL>
-	<PRESET_ID>UINT8</PRESET_ID>
-	<MODULE_ID>STRING</MODULE_ID>
-	<GAMEPARAMS_ID>UINT32</GAMEPARAMS_ID>
+	<PRE_BATTLE_ID> UINT32 </PRE_BATTLE_ID>
+	<PLAYER_ID> INT32 </PLAYER_ID>
+	<TEAM_ID> INT8 </TEAM_ID>
+	<SHIP_ID> UINT32 </SHIP_ID>
+	<CREW_ID> UINT32 </CREW_ID>
+	<SHIP_TYPE_ID> UINT8 </SHIP_TYPE_ID>
+	<SHIP_NATION_ID> UINT8 </SHIP_NATION_ID>
+	<SHIP_LEVEL> UINT8 </SHIP_LEVEL>
+	<PRESET_ID> UINT8 </PRESET_ID>
+	<MODULE_ID> STRING </MODULE_ID>
+	<GAMEPARAMS_ID> UINT32 </GAMEPARAMS_ID>
 	<OBJECT_ID> INT32 </OBJECT_ID>
-	<DB_ID>	INT64	</DB_ID>
+	<DB_ID> INT64 </DB_ID>
 	<MAP_ID> UINT8 </MAP_ID>
-	<ENTITY_ID>INT32</ENTITY_ID>
-	<LOOSING_PARTICIPANTS>ARRAY<of>ENTITY_ID</of></LOOSING_PARTICIPANTS>
-	<WEAPON_TYPE>UINT8</WEAPON_TYPE>
-	<GUN_ID>UINT8</GUN_ID>
-	<GUN_BITS>UINT64</GUN_BITS>
-	<CHARGEABLE_DRUM_GUN_BITS>UINT16</CHARGEABLE_DRUM_GUN_BITS>
-	<PLANE_ID>INT64</PLANE_ID>
-	<TARGET_ID>INT64</TARGET_ID>			<!-- place in which we can use PLANE_ID or ENTITY_ID -->
-	<MASTER_ID>UINT32</MASTER_ID>
-	<CLUSTER_ID>UINT32</CLUSTER_ID>
-	<AVATAR_ID>INT64</AVATAR_ID>
-	<CAMPAIGN_TASK_ID>UINT32</CAMPAIGN_TASK_ID>
-	<ARENA_UNIQUE_ID>UINT64</ARENA_UNIQUE_ID>
-	<BUILDING_UNIQUE_ID>UINT32</BUILDING_UNIQUE_ID>
-	<REASON_ID>UINT32</REASON_ID>
-	<VISIBILITY_FLAG>UINT32</VISIBILITY_FLAG>
-	<SHOT_ID>UINT16</SHOT_ID>
-	<HISTORY_LOGGING_FLAGS>UINT32</HISTORY_LOGGING_FLAGS>
-	<ACES_TASK_PROGRESS>UINT32</ACES_TASK_PROGRESS>
-	<TEAM_INFO>UINT8</TEAM_INFO>
-	<QUEUE_TYPE>UINT16</QUEUE_TYPE>
-	<GAME_MODE>UINT16</GAME_MODE>
-	<SHIP_LEVEL>UINT8</SHIP_LEVEL>
-	<AI_CATEGORY>UINT8</AI_CATEGORY>
-	<RIBBON_ID>INT8</RIBBON_ID>
-	<STATE>UINT8</STATE>
-	<FIELD_ID>UINT16</FIELD_ID>
-	<MINE_ID>UINT16</MINE_ID>
-	<HIT_TYPE>UINT8</HIT_TYPE>
-	<BUOYANCY_STATE>UINT8</BUOYANCY_STATE>
-	<PREMADE_ID>UINT16</PREMADE_ID>
-	<AIR_SUPPORT_CHARGER_INDEX>UINT8</AIR_SUPPORT_CHARGER_INDEX>
-	<PING_HIT_SIDE>INT8</PING_HIT_SIDE>
-	<PING_HIT_COUNT>UINT8</PING_HIT_COUNT>
-	<OUTGOING_WAVE_ID>UINT8</OUTGOING_WAVE_ID>
-	<SUBMARINE_ACOUSTIC_SHOOTER_MODE>UINT8</SUBMARINE_ACOUSTIC_SHOOTER_MODE>
-	<SHADOW_REASON>UINT8</SHADOW_REASON>
+	<ENTITY_ID> INT32 </ENTITY_ID>
+	<LOOSING_PARTICIPANTS> ARRAY <of> ENTITY_ID </of> </LOOSING_PARTICIPANTS>
+	<WEAPON_TYPE> UINT8 </WEAPON_TYPE>
+	<GUN_ID> UINT8 </GUN_ID>
+	<GUN_BITS> UINT64 </GUN_BITS>
+	<CHARGEABLE_DRUM_GUN_BITS> UINT16 </CHARGEABLE_DRUM_GUN_BITS>
+	<PLANE_ID> INT64 </PLANE_ID>
+	<TARGET_ID> INT64 </TARGET_ID>			<!-- place in which we can use PLANE_ID or ENTITY_ID -->
+	<MASTER_ID> UINT32 </MASTER_ID>
+	<CLUSTER_ID> UINT32 </CLUSTER_ID>
+	<AVATAR_ID> INT64 </AVATAR_ID>
+	<CAMPAIGN_TASK_ID> UINT32 </CAMPAIGN_TASK_ID>
+	<ARENA_UNIQUE_ID> UINT64 </ARENA_UNIQUE_ID>
+	<BUILDING_UNIQUE_ID> UINT32 </BUILDING_UNIQUE_ID>
+	<REASON_ID> UINT32 </REASON_ID>
+	<VISIBILITY_FLAG> UINT32 </VISIBILITY_FLAG>
+	<SHOT_ID> UINT16 </SHOT_ID>
+	<HISTORY_LOGGING_FLAGS> UINT32 </HISTORY_LOGGING_FLAGS>
+	<ACES_TASK_PROGRESS> UINT32 </ACES_TASK_PROGRESS>
+	<TEAM_INFO> UINT8 </TEAM_INFO>
+	<QUEUE_TYPE> UINT16 </QUEUE_TYPE>
+	<GAME_MODE> UINT16 </GAME_MODE>
+	<SHIP_LEVEL> UINT8 </SHIP_LEVEL>
+	<AI_CATEGORY> UINT8 </AI_CATEGORY>
+	<RIBBON_ID> INT8 </RIBBON_ID>
+	<STATE> UINT8 </STATE>
+	<FIELD_ID> UINT16 </FIELD_ID>
+	<MINE_ID> UINT16 </MINE_ID>
+	<HIT_TYPE> UINT8 </HIT_TYPE>
+	<BUOYANCY_STATE> UINT8 </BUOYANCY_STATE>
+	<PREMADE_ID> UINT16 </PREMADE_ID>
+	<AIR_SUPPORT_CHARGER_INDEX> UINT8 </AIR_SUPPORT_CHARGER_INDEX>
+	<PING_HIT_SIDE> INT8 </PING_HIT_SIDE>
+	<PING_HIT_COUNT> UINT8 </PING_HIT_COUNT>
+	<OUTGOING_WAVE_ID> UINT8 </OUTGOING_WAVE_ID>
+	<SUBMARINE_ACOUSTIC_SHOOTER_MODE> UINT8 </SUBMARINE_ACOUSTIC_SHOOTER_MODE>
+	<SHADOW_REASON> UINT8 </SHADOW_REASON>
 	<TIMESTAMP> UINT32 </TIMESTAMP>  <!-- it's about ~ 2100 year (if seconds goes from 1970) -->
 	<TOURNAMENT_ROOM_WEB_ID> INT32 </TOURNAMENT_ROOM_WEB_ID>
 	<TOURNAMENT_ROOM_SESSION_ID> INT8 </TOURNAMENT_ROOM_SESSION_ID>
 	<EVENT_LOGIC_FLAGS> UINT8 </EVENT_LOGIC_FLAGS>
 	<SMOKE_REASON> UINT8 </SMOKE_REASON>
+	<SQUADRON_INDEX> INT8 </SQUADRON_INDEX>
+	<DEV_FLAG_INDEX> UINT8 </DEV_FLAG_INDEX>
+	<DEV_DRAWER_ID> UINT16 </DEV_DRAWER_ID>
 
 	<MSGPACK_BLOB>
 		USER_TYPE
@@ -151,16 +154,17 @@
 		ARRAY<of>ENTITY_ID</of>
 	</VISION>
 
-	<VEHICLE_SHADOW_INFO>
+	<VEHICLE_SHADOW>
 		FIXED_DICT
 		<Properties>
-			<vehicleID><Type>	ENTITY_ID		</Type></vehicleID>
-			<position><Type>	VECTOR3			</Type></position>
-			<yaw><Type>			FLOAT			</Type></yaw>
-			<pitch><Type>		FLOAT			</Type></pitch>
-			<reasons><Type>		SHADOW_REASON	</Type></reasons>
+			<vehicleId> <Type> ENTITY_ID </Type> </vehicleId>
+			<paramsId> <Type> GAMEPARAMS_ID </Type> </paramsId>
+			<position> <Type> VECTOR3 </Type> </position>
+			<yaw> <Type> FLOAT </Type> </yaw>
+			<pitch> <Type> FLOAT </Type> </pitch>
+			<visionFlags> <Type> VISIBILITY_FLAG </Type> </visionFlags>
 		</Properties>
-	</VEHICLE_SHADOW_INFO>
+	</VEHICLE_SHADOW>
 	
 	<DB_ID_LIST>
 		ARRAY<of>DB_ID</of>
@@ -223,7 +227,7 @@
 		<Properties>
 			<mapId><Type>MAP_ID</Type></mapId>
 			<type><Type>INT16</Type></type>
-			<duration><Type>INT16</Type></duration>
+			<duration><Type>UINT16</Type></duration>
 			<weather><Type>INT8</Type></weather>
 			<level><Type>INT8</Type></level>
 			<teamBuildType><Type>UINT8</Type></teamBuildType>
@@ -416,7 +420,6 @@
 			<nonClanMembersCount><Type>INT8</Type></nonClanMembersCount>
 			<clanSquadId><Type>INT8</Type></clanSquadId>
 			<selectedOperationID><Type>GAMEPARAMS_ID</Type></selectedOperationID>
-			<enterMatchmaker><Type>BOOL</Type></enterMatchmaker>
 		</Properties>
 		<AllowNone>true</AllowNone>
 		<implementedBy>PreBattleDef.converter</implementedBy>
@@ -560,11 +563,12 @@
 	<DEPTH_CHARGE>
 		FIXED_DICT
 		<Properties>
-			<position>		<Type>	VECTOR3	</Type>	</position>
-			<velocity>		<Type>	VECTOR3	</Type>	</velocity>
-			<shotID>		<Type>	SHOT_ID	</Type>	</shotID>
-			<nowTime>		<Type>	FLOAT	</Type>	</nowTime>
-			<splashSize>	<Type>	FLOAT	</Type>	</splashSize>
+			<position>				<Type>	VECTOR3	</Type>	</position>
+			<velocity>				<Type>	VECTOR3	</Type>	</velocity>
+			<shotID>				<Type>	SHOT_ID	</Type>	</shotID>
+			<nowTime>				<Type>	FLOAT	</Type>	</nowTime>
+			<splashSize>			<Type>	FLOAT	</Type>	</splashSize>
+			<splashSizeToTorpedo>	<Type>	FLOAT	</Type>	</splashSizeToTorpedo>
 		</Properties>
 	</DEPTH_CHARGE>
 
@@ -847,35 +851,6 @@
 			<decal><Type>SHOT_DECAL_STATE</Type></decal>
 		</Properties>
 	</HEAT_INFO_STATE>
-
-	<SURFACE_HYDROPHONE_ZONE_INFO>
-		FIXED_DICT
-		<Properties>
-			<zoneID> 		<Type> UINT8 		</Type> </zoneID>
-			<entityID> 		<Type> ENTITY_ID 	</Type> </entityID>
-			<position2D> 	<Type> VECTOR2 		</Type> </position2D>
-		</Properties>
-	</SURFACE_HYDROPHONE_ZONE_INFO>
-
-	<SURFACE_BROADCAST_ZONE_INFO>
-		FIXED_DICT
-		<Properties>
-			<entityID> 		<Type> ENTITY_ID 	</Type> </entityID>
-			<position2D> 	<Type> VECTOR2 		</Type> </position2D>
-		</Properties>
-	</SURFACE_BROADCAST_ZONE_INFO>
-
-    <HYDROPHONE_TARGET_INFO>
-        FIXED_DICT
-		<Properties>
-			<entityID> 		<Type> ENTITY_ID 	    </Type> </entityID>
-			<paramsID> 		<Type> GAMEPARAMS_ID    </Type> </paramsID>
-			<position> 	    <Type> VECTOR3 		    </Type> </position>
-			<yaw> 	        <Type> FLOAT 		    </Type> </yaw>
-			<pitch> 	    <Type> FLOAT 		    </Type> </pitch>
-		</Properties>
-	</HYDROPHONE_TARGET_INFO>
-
 
 	<READY_CLIENTS_LIST>
 		ARRAY<of>ENTITY_ID</of>
@@ -1321,6 +1296,18 @@
 			<captureLogic><Type>CAPTURE_LOGIC_STATE</Type></captureLogic>
 		</Properties>
 	</INTERACTIVE_ZONE_STATE>
+
+
+	<INTERACTIVE_ZONE_BUFF_INFO>
+		FIXED_DICT
+		<Properties>
+			<buffParamsName><Type> STRING </Type></buffParamsName>
+			<level><Type> INT8 </Type></level>
+			<buffType><Type> INT8 </Type></buffType>
+		</Properties>
+		<AllowNone> true </AllowNone>
+		<implementedBy> BuffDef.simpleBuffInfoConverter </implementedBy>
+	</INTERACTIVE_ZONE_BUFF_INFO>
 
 	<MODIFIERS>
 		USER_TYPE
@@ -1941,16 +1928,25 @@
 		<implementedBy>NullableDef.nullableFloatConverter</implementedBy>
 	</NULLABLE_FLOAT>
 
-	<ACCOUNT_LOAD_ARGS>
+	<ACCOUNT_LOAD_ARGS_DEF>
 		FIXED_DICT
 		<Properties>
-			<loadReason><Type>UINT8</Type></loadReason>
-			<ignoreMasterShutdown><Type>BOOL</Type></ignoreMasterShutdown>
-			<loadMode><Type>UINT8</Type></loadMode>
-			<additionalArgs><Type>PICKLED_BLOB</Type></additionalArgs>
+			<loadReason><Type> UINT8 </Type></loadReason>
+			<ignoreMasterShutdown><Type> BOOL </Type></ignoreMasterShutdown>
+			<loadMode><Type> UINT8 </Type></loadMode>
+			<additionalArgs><Type> PICKLED_BLOB </Type></additionalArgs>
 		</Properties>
-		<implementedBy>AccountLoadArgsDef.converter</implementedBy>
-	</ACCOUNT_LOAD_ARGS>
+		<implementedBy> EntityAPI.accountLoadArgsDefConverter </implementedBy>
+	</ACCOUNT_LOAD_ARGS_DEF>
+
+	<ACCOUNT_LOAD_SUBSCRIPTION_UPDATE_DEF>
+		FIXED_DICT
+		<Properties>
+			<accountDBID><Type> DB_ID </Type></accountDBID>
+			<newExpirationTime><Type> TIMESTAMP </Type></newExpirationTime>
+		</Properties>
+		<implementedBy> EntityAPI.accountLoadSubscriptionUpdateDefConverter </implementedBy>
+	</ACCOUNT_LOAD_SUBSCRIPTION_UPDATE_DEF>
 
 	<VS_EVENT_TASK_KEY>
 		TUPLE<of>STRING</of><size>3</size>
@@ -1978,15 +1974,16 @@
 	<ENQUEUE_DATA>
 		FIXED_DICT
 		<Properties>
-			<realm><Type>STRING</Type></realm>
-			<queueType><Type>QUEUE_TYPE</Type></queueType>
-			<shipID><Type>SHIP_ID</Type></shipID>
-			<queueStatsIDs><Type>PYTHON</Type></queueStatsIDs>
-			<matchmakerDescription><Type>PYTHON</Type></matchmakerDescription>
-			<operationID><Type>GAMEPARAMS_ID</Type></operationID>
-			<battleStarterService><Type>MAILBOX</Type></battleStarterService>
+			<realm><Type> STRING </Type></realm>
+			<queueType><Type> QUEUE_TYPE </Type></queueType>
+			<playerShipID><Type> SHIP_ID </Type></playerShipID>
+			<unitShipIDs><Type> ARRAY <of> SHIP_ID </of></Type></unitShipIDs>
+			<queueStatsIDs><Type> PYTHON </Type></queueStatsIDs>
+			<matchmakerDescription><Type> PYTHON </Type></matchmakerDescription>
+			<operationID><Type> GAMEPARAMS_ID </Type></operationID>
+			<battleStarterService><Type> MAILBOX </Type></battleStarterService>
 		</Properties>
-		<implementedBy>EnqueueProcess.DataTypes.EnqueueDataConverter</implementedBy>
+		<implementedBy> EnqueueProcess.DataTypes.EnqueueDataConverter </implementedBy>
 		<AllowNone> true </AllowNone>
 	</ENQUEUE_DATA>
 	
@@ -2137,9 +2134,9 @@
 			<startTime><Type>UINT32</Type></startTime>
 			<finishTime><Type>UINT32</Type></finishTime>
 			<url><Type>STRING</Type></url>
-			<mainText><Type>STRING</Type></mainText>
-			<tooltipText><Type>STRING</Type></tooltipText>
-			<backgroundImage><Type>STRING</Type></backgroundImage>
+			<mainText><Type>UNICODE_STRING</Type></mainText>
+			<lootboxGPName><Type>STRING</Type></lootboxGPName>
+			<buyLocation><Type>STRING</Type></buyLocation>
 		</Properties>
 		<AllowNone>false</AllowNone>
 	</BARGE_BANNER>
@@ -2204,8 +2201,7 @@
 	<CREATE_BATTLE_SESSION_PARAMS>
 		FIXED_DICT
 		<Properties>
-			<battleDef> <Type>BATTLE_DEF</Type> </battleDef>
-			<uniqueCreationID> <Type>ENTITY_ID</Type> </uniqueCreationID>
+			<battleDef><Type> BATTLE_DEF </Type></battleDef>
 		</Properties>
 	</CREATE_BATTLE_SESSION_PARAMS>
 
@@ -2311,6 +2307,8 @@
 			<level><Type> UINT8 </Type></level>
 			<dogTag><Type> ARRAY <of> GAMEPARAMS_ID </of> </Type></dogTag>
 			<clanInfo><Type> PLAYER_CLAN_INFO </Type></clanInfo>
+			<rankInfoActive><Type> UINT32 </Type></rankInfoActive>
+			<ratingInfo><Type> UINT16 </Type></ratingInfo>
 			<shipID><Type> SHIP_ID </Type></shipID>
 			<teamID><Type> TEAM_ID </Type></teamID>
 			<isCoreMember><Type> BOOL </Type></isCoreMember>
@@ -2328,6 +2326,7 @@
 			<id><Type> PLAYER_ID </Type></id>
 			<dbid><Type> DB_ID </Type></dbid>
 		</Properties>
+		<AllowNone> true </AllowNone>
 		<implementedBy> TournamentsCommonUtils.Defs.inviteeDefConverter </implementedBy>
 	</TOURNAMENT_ROOM_INVITEE_DEF>
 
@@ -2380,5 +2379,25 @@
 		</Properties>
 		<implementedBy> TournamentsCommonUtils.Defs.membershipDataConverter </implementedBy>
 	</TOURNAMENT_ROOM_MEMBERSHIP_DATA>
+	
+	<TAG_TO_MODEL>
+		FIXED_DICT
+		<Properties>
+			<tag><Type asCombo = "True" comboSource = "scripts/universal_model_tags.xml"> STRING </Type></tag>
+			<modelName><Type asFilepath = "True" fileExtension = ".model"> STRING </Type></modelName>
+			<renderSets><Type> ARRAY <of> STRING </of> </Type></renderSets>
+		</Properties>
+	</TAG_TO_MODEL>
+
+	<SPOTLIGHT>
+		FIXED_DICT
+		<Properties>
+			<nodeName><Type> STRING </Type></nodeName>
+			<modelPath><Type> STRING </Type></modelPath>
+			<effectNodeName><Type> STRING </Type></effectNodeName>
+			<effectPath><Type> STRING </Type></effectPath>
+			<intensityParams><Type> ARRAY <of> FLOAT </of><size> 6 </size></Type></intensityParams>
+		</Properties>
+	</SPOTLIGHT>
 
 </root>

@@ -193,16 +193,6 @@
             <Flags>ALL_CLIENTS</Flags>
             <Default>0</Default>
         </movementControlBlockType>
-        <inHydrophoneRangeType>
-            <Type>UINT8</Type>
-            <Flags>ALL_CLIENTS</Flags>
-            <Default>0</Default>
-        </inHydrophoneRangeType>
-        <shadowReasons>
-            <Type>SHADOW_REASON</Type>
-            <Flags>ALL_CLIENTS</Flags>
-            <Default>0</Default>
-        </shadowReasons>
     </Properties>
     <ClientMethods>
         <onAvatarReady></onAvatarReady>
@@ -278,14 +268,18 @@
             </Args>
         </syncArmorSegments>
         <kill>
-            <Arg>INT8</Arg>
-            <Arg>UINT32</Arg>
-            <Arg>UINT32</Arg>
-            <Arg>FLOAT</Arg>
-            <Arg>UINT8</Arg>
-            <Arg>VECTOR2</Arg>
-            <Arg>VECTOR3</Arg>
-            <Arg>VECTOR3</Arg>
+            <Args>
+                <crackNum>INT8</crackNum>
+                <typeDeath>UINT32</typeDeath>
+                <deathSubtype>UINT8</deathSubtype>
+                <deathReasonAmmoId>GAMEPARAMS_ID</deathReasonAmmoId>
+                <sinkTime>FLOAT</sinkTime>
+                <sinkType>UINT8</sinkType>
+                <trimBank>VECTOR2</trimBank>
+                <collisionPos>VECTOR3</collisionPos>
+                <linearVelocity>VECTOR3</linearVelocity>
+                <trimCoeff>FLOAT</trimCoeff>
+            </Args>
         </kill>
         <forceSink>
             <Arg>FLOAT</Arg>
@@ -411,11 +405,6 @@
             <Arg>WEAPON_TYPE</Arg>
             <Arg>GUN_DIRECTIONS</Arg>
         </receiveGunSyncRotations>
-        <receiveOnPingDeactivated>
-            <Args>
-                <targetID>ENTITY_ID</targetID>
-            </Args>
-        </receiveOnPingDeactivated>
         <receiveOutgoingWaveAssignedTorpedo>
             <Args>
                 <waveID>OUTGOING_WAVE_ID</waveID>
@@ -485,6 +474,7 @@
                 <width>FLOAT</width>
                 <hitCount>PING_HIT_COUNT</hitCount>
                 <waveYaw>FLOAT</waveYaw>
+                <useAnaloguePing>BOOL</useAnaloguePing>
             </Args>
         </receiveNewIncomingWave>
         <receiveIncomingWaveUpdate>

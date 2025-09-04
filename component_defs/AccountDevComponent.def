@@ -52,7 +52,7 @@
 			<Exposed/>
 		</resetBranchDrops>
 
-		<!-- Dev Method for receives notification from WGNC Stub -->
+		<!-- Dev Method for receives notification from LGNC Stub -->
 		<receiveExternalNotification>
 			<!-- code of notification see NotificationCenterStub.py gContents keys -->
 			<Arg> UINT16 </Arg>
@@ -306,9 +306,14 @@
 		<performFakeRatingBattle>
 			<Exposed/>
 			<Args>
-				<isWinner> BOOL </isWinner>
+				<result> INT8 </result>
+				<exp> UINT16 </exp>
 			</Args>
 		</performFakeRatingBattle>
+
+		<resetTrialsProgress>
+			<Exposed/>
+		</resetTrialsProgress>
 
 	</BaseMethods>
 

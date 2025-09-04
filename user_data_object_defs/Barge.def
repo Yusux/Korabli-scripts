@@ -14,6 +14,11 @@
             <resourceref/>
         </bargeModelPath>
 
+        <spotlights>
+            <Type> ARRAY <of> SPOTLIGHT </of> </Type>
+            <Editable> True </Editable>
+        </spotlights>
+
         <sailorModelPath>
             <Type> STRING </Type>
             <Editable> True </Editable>

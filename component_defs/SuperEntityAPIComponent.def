@@ -1,17 +1,11 @@
 <root>
-	<Properties>
-	</Properties>
-
-	<TempProperties>
-	    <SuperEntityAPIComponent__accountLoadHelper/>
-	    <SuperEntityAPIComponent__clientsWatcherVaryID/>
-	</TempProperties>
 
 	<Methods>
+
 		<loadAccount>
 			<Args>
 				<accountDBID> DB_ID </accountDBID>
-				<loadArgs> ACCOUNT_LOAD_ARGS </loadArgs>
+				<loadArgs> ACCOUNT_LOAD_ARGS_DEF </loadArgs>
 			</Args>
 			<ReturnValues>
 				<account> MAILBOX </account>
@@ -21,7 +15,7 @@
 		<loadAccountController>
 			<Args>
 				<accountControllerDBID> DB_ID </accountControllerDBID>
-				<loadArgs> ACCOUNT_LOAD_ARGS </loadArgs>
+				<loadArgs> ACCOUNT_LOAD_ARGS_DEF </loadArgs>
 			</Args>
 			<ReturnValues>
 				<account> MAILBOX </account>\
@@ -31,6 +25,7 @@
 		<storeAccountControllerInfo>
 			<Args>
 				<accountController> MAILBOX </accountController>
+				<accountLoadReason> UINT8 </accountLoadReason>
 				<accountDBID> DB_ID </accountDBID>
 				<masterID> MASTER_ID </masterID>
 			</Args>
@@ -46,11 +41,11 @@
 		<onMasterChangeStarted>
 			<Args>
 				<accountDBID> DB_ID </accountDBID>
-				<accountController>MAILBOX</accountController>
+				<accountController> MAILBOX </accountController>
 			</Args>
 			<ReturnValues>
-				<masterId>MASTER_ID</masterId>
-				<masterService>MAILBOX</masterService>
+				<masterId> MASTER_ID </masterId>
+				<masterService> MAILBOX </masterService>
 			</ReturnValues>
 		</onMasterChangeStarted>
 
@@ -61,16 +56,35 @@
 				<clearPersistentProperties> ZIPPED_BLOB </clearPersistentProperties>
 			</Args>
 			<ReturnValues>
-				<errorCode>UINT8</errorCode>
+				<errorCode> UINT8 </errorCode>
 			</ReturnValues>
 		</removeGdprDataOnMasters>
+
+		<subscribeForLoadAccounts>
+			<Args>
+				<accountDBIDs> ARRAY <of> DB_ID </of> </accountDBIDs>
+				<subscriberMBox> MAILBOX </subscriberMBox>
+			</Args>
+			<ReturnValues>
+				<result> UINT8 </result>
+			</ReturnValues>
+		</subscribeForLoadAccounts>
+
+		<updateSubscriptionsForLoadAccounts>
+			<Args>
+				<updatedAppSubscriptions> ARRAY <of> ACCOUNT_LOAD_SUBSCRIPTION_UPDATE_DEF </of> </updatedAppSubscriptions>
+				<subscriberApp> MAILBOX </subscriberApp>
+			</Args>
+		</updateSubscriptionsForLoadAccounts>
+
 	</Methods>
 
 	<ofService>
-	    <SuperService/>
+		<SuperService/>
 	</ofService>
-	
+
 	<ofBWComponent>
 		<service/>
 	</ofBWComponent>
+
 </root>

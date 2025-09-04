@@ -6,9 +6,7 @@
 	<DropZone/>
 	<Minefield/>
 	<Prefab/>
-	<MapPartInfo/>
 	<MapBorder/>
-	<MapSeparator/>
 	<InteractiveRadio/>
 	<InteractiveObject/>
 	<RegionModel/>
@@ -20,4 +18,5 @@
 	<TrailDebugTool/>
 	<Trigger/>
 	<WayPoint/>
+	<UniversalModel/>
 </root>

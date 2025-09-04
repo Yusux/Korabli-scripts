@@ -23,6 +23,7 @@
 		<vision/>
 		<directVision/>
 		<mainSquadronVision/>
+		<shadowVision/>
 		<entitiesInVisionArea/>
 		<invisibleEntitiesInVisionArea />
 		<evMovedFromInvisibility />

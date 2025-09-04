@@ -49,6 +49,23 @@
 			</Args>
 		</receiveSpawnedBotId>
 
+		<addDrawerPrimitive>
+			<Args>
+				<devFlagIndex> DEV_FLAG_INDEX </devFlagIndex>
+				<drawerID> DEV_DRAWER_ID </drawerID>
+				<drawFunc> STRING </drawFunc>
+				<args> PICKLED_BLOB </args>
+				<timeout> FLOAT </timeout>
+			</Args>
+		</addDrawerPrimitive>
+
+		<clearDrawer>
+			<Args>
+				<devFlagIndex> DEV_FLAG_INDEX </devFlagIndex>
+				<drawerID> DEV_DRAWER_ID </drawerID>
+			</Args>
+		</clearDrawer>
+
 	</ClientMethods>
 
 	<CellMethods>
@@ -160,6 +177,7 @@
 				<weaponType> WEAPON_TYPE </weaponType>
 				<clientTargetPos> VECTOR3 </clientTargetPos>
 				<startPos> VECTOR3 </startPos>
+				<squadronIndex> SQUADRON_INDEX </squadronIndex>
 			</Args>
 		</shootFromArbitraryPos>
 

@@ -11,9 +11,9 @@
 	<BaseMethods>
 
 		<getReadyAccountMBox>
-		    <Args>
-		        <timeout>UINT16</timeout>
-		    </Args>
+			<Args>
+				<timeout> UINT16 </timeout>
+			</Args>
 			<ReturnValues>
 				<Arg> MAILBOX </Arg>
 			</ReturnValues>
@@ -27,9 +27,9 @@
 
 		<performAccountLoad>
 			<Args>
-				<masterID>MASTER_ID</masterID>
-				<masterService>MAILBOX</masterService>
-				<loadArgs>ACCOUNT_LOAD_ARGS</loadArgs>
+				<masterID> MASTER_ID </masterID>
+				<masterService> MAILBOX </masterService>
+				<loadArgs> ACCOUNT_LOAD_ARGS_DEF </loadArgs>
 			</Args>
  			<ReturnValues>
 				<mailbox> MAILBOX </mailbox>
@@ -45,6 +45,7 @@
 		</onAccountDestroy>
 
 		<onMasterChangeProcessStarted/>
+
 	</BaseMethods>
 
 	<ofEntity>

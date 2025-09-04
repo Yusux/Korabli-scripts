@@ -38,6 +38,8 @@
 	<AvatarDevComponent/>
 	<AccountClanComponent/>
 	<AvatarClanComponent/>
+	<AccountVoiceChatComponent/>
+	<AvatarVoiceChatComponent/>
 	<TrainingRoomDevComponent/>
 	<VehicleDevComponent/>
 	<ShipsMasteryComponent/>
@@ -45,4 +47,6 @@
 	<TournamentRoomMemberComponent/>
 	<TournamentRoomsManagerDevComponent/>
 	<RatingBattlesComponent/>
+	<TrialsComponent/>
+	<AvatarMatchmakerComponent/>
 </root>

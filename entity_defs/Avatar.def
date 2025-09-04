@@ -3,7 +3,6 @@
 <root>
     <Implements>
         <Interface>BattleLogicEntityOwner</Interface>
-        <Interface>VoiceChatClient</Interface>
         <Interface>StatsPublisher</Interface>
         <Interface>GiveClientHelper</Interface>
         <Interface>DebugDrawEntity</Interface>
@@ -115,11 +114,6 @@
             </Type>
             <Flags>OWN_CLIENT</Flags>
         </worldSound>
-        <useSubmarinesPrototypeLogic>
-            <Type>BOOL</Type>
-            <Flags>ALL_CLIENTS</Flags>
-            <Default>False</Default>
-        </useSubmarinesPrototypeLogic>
     </Properties>
     <ClientMethods>
         <torpedoParamsUpdate>
@@ -144,6 +138,7 @@
                 <weaponLocks>ARRAY
                     <of>WEAPON_LOCK_STATE</of>
                 </weaponLocks>
+                <isBWBot>BOOL</isBWBot>
             </Args>
         </onConnected>
         <receiveShellInfo>
@@ -387,17 +382,28 @@
             <Arg>PLANE_PATH</Arg>
         </receive_resetWaypoints>
         <receive_wardAdded>
-            <Arg>PLANE_ID</Arg>
-            <Arg>VECTOR3</Arg>
-            <Arg>FLOAT</Arg>
-            <Arg>FLOAT</Arg>
-            <Arg>TEAM_ID</Arg>
-            <Arg>UINT64</Arg>
-            <Arg>BOOL</Arg>
+            <Args>
+                <squadronID>PLANE_ID</squadronID>
+                <position>VECTOR3</position>
+                <timeRemaining>FLOAT</timeRemaining>
+                <radius>VECTOR2</radius>
+                <teamId>TEAM_ID</teamId>
+                <ownerId>ENTITY_ID</ownerId>
+                <wardTypes>UINT8</wardTypes>
+                <wardState>UINT8</wardState>
+            </Args>
         </receive_wardAdded>
         <receive_wardRemoved>
             <Arg>PLANE_ID</Arg>
         </receive_wardRemoved>
+        <receive_wardUpdated>
+            <Args>
+                <squadronID>PLANE_ID</squadronID>
+                <timeRemaining>FLOAT</timeRemaining>
+                <wardTypes>UINT8</wardTypes>
+                <wardState>UINT8</wardState>
+            </Args>
+        </receive_wardUpdated>
         <receive_changeState>
             <Arg>PLANE_ID</Arg>
             <Arg>UINT8</Arg>
@@ -500,6 +506,12 @@
             <Arg>VECTOR3</Arg>
             <Arg>FLOAT</Arg>
         </receive_teleportSquadron>
+        <receive_squadronOrder>
+            <Args>
+                <squadronId>PLANE_ID</squadronId>
+                <squadronOrder>UINT8</squadronOrder>
+            </Args>
+        </receive_squadronOrder>
         <receive_squadronChangeTeamAtMinimap>
             <Args>
                 <squadronId>PLANE_ID</squadronId>
@@ -646,6 +658,11 @@
                 <ownerId>PLAYER_ID</ownerId>
             </Args>
         </onOwnerChanged>
+        <prepareForAnotherBattle>
+            <ReturnValues>
+                <prepared>BOOL</prepared>
+            </ReturnValues>
+        </prepareForAnotherBattle>
         <onEnterDivision>
             <Args>
                 <packedPreBattleData>BLOB</packedPreBattleData>
@@ -743,26 +760,7 @@
         <setSubSkillAlert>
             <Arg>BOOL</Arg>
         </setSubSkillAlert>
-        <updateSurfaceHydrophone>
-            <Arg>ARRAY
-                <of>SURFACE_HYDROPHONE_ZONE_INFO</of>
-            </Arg>
-        </updateSurfaceHydrophone>
-        <updateSurfaceHydrophoneBroadcast>
-            <Arg>ARRAY
-                <of>SURFACE_BROADCAST_ZONE_INFO</of>
-            </Arg>
-        </updateSurfaceHydrophoneBroadcast>
-        <surfaceHydrophoneRemoveTarget>
-            <Arg>ENTITY_ID</Arg>
-        </surfaceHydrophoneRemoveTarget>
-        <addHydrophoneTargets>
-            <Arg>ARRAY
-                <of>HYDROPHONE_TARGET_INFO</of>
-            </Arg>
-        </addHydrophoneTargets>
         <hideIntuitionIndicator></hideIntuitionIndicator>
-        <hideHydrophoneIndicator></hideHydrophoneIndicator>
         <receiveAcousticTargetID>
             <Args>
                 <torpedoID>SHOT_ID</torpedoID>
@@ -854,21 +852,24 @@
         <updateBuoyancyRudderCruise>
             <Arg>FLOAT</Arg>
         </updateBuoyancyRudderCruise>
-        <receiveAutoAirSupportActivation>
+        <receiveAirSupportActivation>
             <Args>
+                <gunId>GUN_ID</gunId>
                 <chargerIndex>AIR_SUPPORT_CHARGER_INDEX</chargerIndex>
             </Args>
-        </receiveAutoAirSupportActivation>
+        </receiveAirSupportActivation>
         <receiveManualAirSupportActivation>
             <Args>
+                <gunId>GUN_ID</gunId>
                 <chargerIndex>AIR_SUPPORT_CHARGER_INDEX</chargerIndex>
                 <squadronID>PLANE_ID</squadronID>
                 <attackPoint>VECTOR3</attackPoint>
                 <aimLength>FLOAT</aimLength>
             </Args>
         </receiveManualAirSupportActivation>
-        <receiveManualAirSupportDeactivation># TODO: have to be removed
+        <receiveManualAirSupportDeactivation>
             <Args>
+                <gunId>GUN_ID</gunId>
                 <chargerIndex>AIR_SUPPORT_CHARGER_INDEX</chargerIndex>
                 <squadronID>PLANE_ID</squadronID>
             </Args>
@@ -894,11 +895,14 @@
         </receivePingerSelfExposureWave>
         <receiveVehicleShadows>
             <Args>
-                <vehicleShadowInfos>ARRAY
-                    <of>VEHICLE_SHADOW_INFO</of>
-                </vehicleShadowInfos>
+                <shadows>ARRAY
+                    <of>VEHICLE_SHADOW</of>
+                </shadows>
             </Args>
         </receiveVehicleShadows>
+        <onNewVehicleShadowInVision>
+            <Args></Args>
+        </onNewVehicleShadowInVision>
         <receivePingerLaunchPosition>
             <Arg>ENTITY_ID</Arg>
             <Arg>FLAT_VECTOR</Arg>
@@ -933,6 +937,13 @@
                 <maxCruiseSpeed>FLOAT</maxCruiseSpeed>
             </Args>
         </setCruiseSpeedLimits>
+        <receiveCollisionDamage>
+            <Args>
+                <victimId>ENTITY_ID</victimId>
+                <hpDamage>FLOAT</hpDamage>
+                <shotPosition>VECTOR3</shotPosition>
+            </Args>
+        </receiveCollisionDamage>
     </ClientMethods>
     <CellMethods>
         <useConsumable>
@@ -974,6 +985,10 @@
         <stopShooting>
             <Exposed>OWN_CLIENT</Exposed>
         </stopShooting>
+        <callNonAimingAirSupport>
+            <Exposed>OWN_CLIENT</Exposed>
+            <Args></Args>
+        </callNonAimingAirSupport>
         <sendWave>
             <Exposed>OWN_CLIENT</Exposed>
             <Arg>FLOAT</Arg>
@@ -1041,7 +1056,9 @@
         </setCone>
         <launchSquadron>
             <Exposed>OWN_CLIENT</Exposed>
-            <Arg>INT8</Arg>
+            <Args>
+                <localSquadronId>SQUADRON_INDEX</localSquadronId>
+            </Args>
         </launchSquadron>
         <dropProjectiles>
             <Exposed>OWN_CLIENT</Exposed>
@@ -1128,10 +1145,6 @@
         <activateRageMode>
             <Exposed>OWN_CLIENT</Exposed>
         </activateRageMode>
-        <deactivatePing>
-            <Exposed>OWN_CLIENT</Exposed>
-            <Arg>ENTITY_ID</Arg>
-        </deactivatePing>
         <changeAutopilotState>
             <Exposed>OWN_CLIENT</Exposed>
             <Arg>BOOL</Arg>
